@@ -9,7 +9,7 @@ public class Customer {
 	private String address;
 	private int discount;
 	private int credit;
-	private pinCode pinCode;
+	private pincode pincode;
 	
 	
 	
