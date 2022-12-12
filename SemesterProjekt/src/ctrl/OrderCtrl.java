@@ -1,5 +1,7 @@
 package ctrl;
 
+import model.AbstractProduct;
+import model.Customer;
 import model.Order;
 import model.OrderCont;
 import model.Personel;
@@ -11,4 +13,21 @@ public class OrderCtrl {
 		OrderCont.getInstance().addOrder(o);
 		return o;
 	}
+	
+	public AbstractProduct scanProduct(String barcode) {
+	
+	}
+	
+	public Customer findCustomerByNumber(String phone) {
+		
+	}
+	
+	public void chooseDeliveryAddress(String address) {
+		
+	}
+	
+	public double choosePayment(enum payment) {
+		
+	}
+	
 }
