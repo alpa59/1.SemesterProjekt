@@ -25,7 +25,8 @@ public class OrderCtrl {
 	}
 
 	public Customer findCustomerByNumber(String phone) {
-		return CustomerCont.getInstance().findCustomerByNumber(phone);
+		CustomerCtrl cc = new CustomerCtrl();
+		return cc.findCustomerByNumber(phone);
 	}
 
 	public void chooseDeliveryAddress(String address) {
@@ -36,5 +37,18 @@ public class OrderCtrl {
 		currOrder.setPayment(payment);
 	}
 	
+	public void confirmOrder() {
+		updateInventory();
+	}
+	
+	public void updateInventory() {
+		ProductCtrl pc = new ProductCtrl();
+		for(int i = 0; i < currOrder.getOrderLines().size();i++){
+			AbstractProduct res = currOrder.getOrderLines().get(i).getAbstractProduct();
+			pc.updateInventory(res, currOrder.getOrderLines().get(i).getAmount());
+		}
+	}
+	
 }
+
 

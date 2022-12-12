@@ -17,4 +17,13 @@ public class InventoryLocationLine {
 		this.simpleProduct = simpleProduct;
 	}
 
+	public boolean updateAmount(int quantity) {
+		boolean res = false;
+		if (amount >= quantity) {
+			amount -= quantity;
+			res = true;
+		}
+		return res;
+	}
+
 }

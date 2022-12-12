@@ -28,7 +28,10 @@ public abstract class AbstractProduct {
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
-
+	
+	public double getPrice() {
+		return price;
+	}
 	protected abstract boolean updateInventory(int quantity);
 	
 }

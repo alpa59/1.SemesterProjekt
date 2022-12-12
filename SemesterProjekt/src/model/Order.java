@@ -48,8 +48,16 @@ public class Order {
 	}
 
 	public double calculateTotal() {
-		return 1.2; // TODO
+		double total = 0.0;
+		for (int i = 0; i < orderLines.size(); i++) {
+			total = +orderLines.get(i).getAbstractProduct().getPrice();
+		}
+		return total;
 
+	}
+	
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
 	}
 
 	public Customer getCustomer() {
@@ -64,8 +72,8 @@ public class Order {
 		this.totalPrice = totalPrice;
 	}
 
-	public void setPayment(Payment payment2) {
-		this.payment = payment2;
+	public void setPayment(Payment payment) {
+		this.payment = payment;
 	}
 
 }
