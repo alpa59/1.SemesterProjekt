@@ -1,4 +1,4 @@
-package Ctrl;
+package ctrl;
 
 public class CustomerCtrl {
 

@@ -1,4 +1,5 @@
-package Ctrl;
+package ctrl;
+import model.*;
 
 public class ProductCtrl {
 
