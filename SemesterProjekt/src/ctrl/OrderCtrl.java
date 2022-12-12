@@ -4,10 +4,9 @@ import model.*;
 
 public class OrderCtrl {
 
-	private Personel currPersonel;
 	private Order currOrder;
 
-	public Order createOrder() {
+	public Order createOrder(Personel currPersonel) {
 		Order o = new Order(currPersonel);
 		currOrder = o;
 		return o;
