@@ -17,12 +17,16 @@ public class ProductCont {
 	private ProductCont() {
 		products = new ArrayList<>();
 	}
+	
+	public void addProduct(AbstractProduct product) {
+		products.add(product);
+	}
 
 	public AbstractProduct findProduct(String barcode) {
 		AbstractProduct res = null;
 		boolean found = false;
 		for (int i = 0; i < products.size() && !found; i++) {
-			if (products.get(i).getBarcode() == barcode) {
+			if (products.get(i).getBarcode().equals(barcode)) {
 				res = products.get(i);
 				found = true;
 			}
