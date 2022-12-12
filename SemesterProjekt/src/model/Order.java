@@ -12,7 +12,7 @@ public class Order {
 	private String address;
 	
 	public Order(Personel currPersonel) {
-		this.orderId = currPersonel.getPersonelId();
+		this.orderId = currPersonel.getPersonelID();
 		this.date = LocalDate.now();
 	}
 	
