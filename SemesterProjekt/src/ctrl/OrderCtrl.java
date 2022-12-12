@@ -28,7 +28,7 @@ public class OrderCtrl {
 		boolean res = false;
 		double total = currOrder.calculateTotal();
 		if(currOrder.getCustomer().getCredit() <= total) {
-			res = true;
+			res = true; //TODO make it actually pay
 		}
 		
 		return res;

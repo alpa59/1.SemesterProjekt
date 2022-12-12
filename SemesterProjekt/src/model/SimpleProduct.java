@@ -29,7 +29,10 @@ public class SimpleProduct extends AbstractProduct {
 
 	@Override
 	protected boolean updateInventory(int quantity) {
-		return false;
+		boolean res = false;
+		ills.
+		
+		return res;
 	}
 
 }
