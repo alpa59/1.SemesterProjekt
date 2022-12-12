@@ -17,7 +17,7 @@ public class OrderCont {
 		orders = new ArrayList<>();
 	}
 
-	public void addLoan(Order o) {
+	public void addOrder(Order o) {
 		orders.add(o);
 
 	}

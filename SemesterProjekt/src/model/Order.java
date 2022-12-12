@@ -9,7 +9,8 @@ public class Order {
 	private String deliveryLocation;
 	private LocalDate date;
 	
-	public Order() {
+	public Order(Personel currPersonel) {
+		
 	}
 
 	public void setDeliveryLocation(String deliveryLocation) {
