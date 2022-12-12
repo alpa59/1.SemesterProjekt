@@ -21,7 +21,6 @@ public class Composite extends AbstractProduct {
 
 	@Override
 	protected boolean updateInventory(int quantity) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

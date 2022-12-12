@@ -30,4 +30,5 @@ public abstract class AbstractProduct {
 	}
 
 	protected abstract boolean updateInventory(int quantity);
+	
 }

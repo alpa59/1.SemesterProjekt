@@ -4,9 +4,12 @@ public class CompositeLine {
 	
 	private int amount;
 	private AbstractProduct abstractProduct;
+	private Composite composite;
 	
-	public CompositeLine(int amount) {
+	public CompositeLine(int amount, AbstractProduct abstractProduct, Composite composite) {
 		this.amount = amount;
+		this.abstractProduct = abstractProduct;
+		this.composite = composite;
 	}
 
 }
