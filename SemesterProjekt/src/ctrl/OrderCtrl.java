@@ -19,8 +19,18 @@ public class OrderCtrl {
 		return currProduct;
 	}
 
-	private boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
+	public boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
 		boolean res = currOrder.findOrderLineItem(currProduct);
+		return res;
+	}
+	
+	public boolean checkCreditAndPay() {
+		boolean res = false;
+		double total = currOrder.calculateTotal();
+		if(currOrder.getCustomer().getCredit() <= total) {
+			res = true;
+		}
+		
 		return res;
 	}
 

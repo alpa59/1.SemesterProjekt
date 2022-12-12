@@ -8,12 +8,12 @@ public class Customer {
 	private String phoneNumber;
 	private String address;
 	private int discount;
-	private int credit;
+	private double credit;
 	private int pincode;
 	
 	
 	public Customer(String customerID, String name, String email, String phoneNumber, String address, int discount,
-			int credit, int pincode) {
+			double credit, int pincode) {
 		super();
 		this.customerID = customerID;
 		this.name = name;
@@ -29,6 +29,10 @@ public class Customer {
 	}
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	public double getCredit() {
+		return credit;
 	}
 	
 	
