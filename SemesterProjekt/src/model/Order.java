@@ -12,15 +12,21 @@ public class Order {
 	private String address;
 	
 	public Order(Personel currPersonel) {
-		
+		this.orderId = currPersonel.getPersonelId();
+		this.date = LocalDate.now();
 	}
 	
 	public OrderLine findOrderLineItem(AbstractProduct abstractProduct) {
-		
+		for(OrderLine orderLine : orderLineList) {
+			if(orderLine.getAbstractProduct().equals(abstractProduct)) {
+				return orderLine;
+			}
+		}
+		return null;
 	}
 	
-	public boolean addOrderLine(Orderline orderLine) {
-		
+	public boolean addOrderLine(OrderLine orderLine) {
+
 	}
 	
 	public void setCustomer(Customer customer) {
@@ -36,7 +42,7 @@ public class Order {
 	}
 	
 	public Customer getCustomer() {
-		
+		return customer;
 	}
 	
 	public void increaseQtyByOne(OrderLine orderLine) {
