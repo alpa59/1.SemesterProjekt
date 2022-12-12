@@ -8,6 +8,8 @@ public class Order {
 	private boolean condition;
 	private String deliveryLocation;
 	private LocalDate date;
+	private Customer customer;
+	private String address;
 	
 	public Order(Personel currPersonel) {
 		
@@ -22,11 +24,11 @@ public class Order {
 	}
 	
 	public void setCustomer(Customer customer) {
-		
+		this.customer = customer;
 	}
 	
 	public void setAddress(String address) {
-		
+		this.address = address;
 	}
 	
 	public double calculateTotal() {
