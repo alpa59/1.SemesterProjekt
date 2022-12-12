@@ -1,39 +1,41 @@
 package ctrl;
 
-import model.AbstractProduct;
-import model.Customer;
-import model.CustomerCont;
-import model.Order;
-import model.OrderCont;
-import model.Personel;
-import model.ProductCont;
+import model.*;
 
 public class OrderCtrl {
-	
-	public Order createOrder(Personel currPersonel) {
+
+	private Personel currPersonel;
+	private Order currOrder;
+
+	public Order createOrder() {
 		Order o = new Order(currPersonel);
-		OrderCont.getInstance().addOrder(o);
+		currOrder = o;
 		return o;
 	}
-	
+
 	public AbstractProduct scanProduct(String barcode) {
-//		AbstractProduct product = ProductCont.getInstance().findProduct(barcode);
-//		if (product !=null) {
-//			OrderCont.getInstance()
-//			}
-		return null;
+		AbstractProduct currProduct = null;
+		currProduct = new ProductCtrl().findProduct(barcode);
+		checkAlreadyScannedProductAndAdd(currProduct);
+		return currProduct;
 	}
-	
+
+	private boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
+		boolean res = currOrder.findOrderLineItem(currProduct);
+		return res;
+	}
+
 	public Customer findCustomerByNumber(String phone) {
 		return CustomerCont.getInstance().findCustomerByNumber(phone);
 	}
-	
+
 	public void chooseDeliveryAddress(String address) {
-		
+		currOrder.setAddress(address);
 	}
-	
-	public double choosePayment(enum payment) {
-		
+
+	public void choosePayment(Payment payment) {
+		currOrder.setPayment(payment);
 	}
 	
 }
+
