@@ -17,8 +17,8 @@ public class SimpleProduct extends AbstractProduct {
 		ills = new LinkedList<>();
 	}
 
-	public void createInventoryLocation(int amount) {
-		InventoryLocationLine line = new InventoryLocationLine(amount, this);
+	public void createInventoryLocation(int amount, String location) {
+		InventoryLocationLine line = new InventoryLocationLine(amount, this, location);
 		addIventoryLocationLine(line);
 	}
 
