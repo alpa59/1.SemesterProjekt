@@ -20,14 +20,16 @@ public class Order {
 		cashier = currPersonel;
 	}
 
-	public boolean findOrderLineItem(AbstractProduct abstractProduct) {
+	public boolean findOrderLineItemAndAdd(AbstractProduct abstractProduct) {
 		boolean res = false;
 		for (int i = 0; i < orderLines.size(); i++) {
 			if (orderLines.get(i).getAbstractProduct().equals(abstractProduct)) {
 				orderLines.get(i).increaseQtyByOne();
 				res = true;
 			} else {
-				new OrderLine(abstractProduct);
+				OrderLine ol = new OrderLine(abstractProduct);
+				this.addOrderLine(ol);
+				
 
 			}
 		}

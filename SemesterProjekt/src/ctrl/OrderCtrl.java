@@ -12,12 +12,12 @@ public class OrderCtrl {
 		return o;
 	}
 
-	public AbstractProduct scanProduct(String barcode) throws scannedProductFailedException {
+	public AbstractProduct scanProduct(String barcode) throws ScannedProductFailedException {
 
 		AbstractProduct currProduct = new ProductCtrl().findProduct(barcode);
 
 		if (currProduct == null) {
-			throw new scannedProductFailedException("Could not scan the product", null);
+			throw new ScannedProductFailedException("Could not scan the product", null);
 		}
 		
 		checkAlreadyScannedProductAndAdd(currProduct);
@@ -25,7 +25,7 @@ public class OrderCtrl {
 	}
 
 	public boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
-		boolean res = currOrder.findOrderLineItem(currProduct);
+		boolean res = currOrder.findOrderLineItemAndAdd(currProduct);
 		return res;
 	}
 
@@ -53,7 +53,7 @@ public class OrderCtrl {
 	}
 
 	public void confirmOrder() {
-		updateInventory();
+		updateInventory(); 
 	}
 
 	public void updateInventory() {
