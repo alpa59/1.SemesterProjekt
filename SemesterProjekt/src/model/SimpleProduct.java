@@ -24,7 +24,7 @@ public class SimpleProduct extends AbstractProduct {
 
 	private void addIventoryLocationLine(InventoryLocationLine ill) {
 		ills.add(ill);
-		ill.setSimpleproduct(this);
+		ill.setSimpleProduct(this);
 	}
 
 	@Override
