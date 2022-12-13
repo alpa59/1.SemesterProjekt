@@ -25,5 +25,9 @@ public class InventoryLocationLine {
 		}
 		return res;
 	}
+	
+	public int getAmount() {
+		return amount;
+	}
 
 }

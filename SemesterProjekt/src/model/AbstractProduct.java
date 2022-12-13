@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public abstract class AbstractProduct {
 	private String name;
 	private String description;
@@ -8,6 +10,7 @@ public abstract class AbstractProduct {
 	private double purchasePrice;
 	private double nettoPrice;
 	private double weight;
+	private List<CompositeLine> compositeLines;
 
 	public AbstractProduct(String name, String description, String barcode, double price, double purchasePrice,
 			double nettoPrice, double weight) {

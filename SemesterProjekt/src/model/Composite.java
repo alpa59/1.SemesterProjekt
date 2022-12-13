@@ -21,6 +21,11 @@ public class Composite extends AbstractProduct {
 
 	@Override
 	protected boolean updateInventory(int quantity) {
-		return false; // TODO
+		boolean res = false;
+		for(CompositeLine cl: compositeLine) {
+			cl.getAbstractProduct().updateInventory(cl.getAmount());
+			res = true;
+		}
+		return res;
 	}
 }

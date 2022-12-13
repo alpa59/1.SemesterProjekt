@@ -30,8 +30,13 @@ public class SimpleProduct extends AbstractProduct {
 	@Override
 	protected boolean updateInventory(int quantity) {
 		boolean res = false;
-		ills.
-		
+		for (int i = 0; i < ills.size() && res == false; i++) {
+			if (quantity < ills.get(i).getAmount()) {
+				ills.get(i).updateAmount(quantity);
+				res = true;
+			}
+		}
+
 		return res;
 	}
 
