@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Order {
@@ -17,6 +18,8 @@ public class Order {
 	public Order(Personel currPersonel) {
 		this.date = LocalDate.now();
 		cashier = currPersonel;
+		orderLines = new LinkedList<>();
+		
 	}
 
 	public boolean findOrderLineItemAndAdd(AbstractProduct abstractProduct) {

@@ -24,7 +24,7 @@ public class TuiMainMenu {
 				break;
 			case "exit":
 				TextInput ti = new TextInput();
-				goOn = !ti.promptBoolean("Are you sure you want to exit?");
+				goOn = !ti.promptBoolean("Are you sure you want to exit? \"yes\" or \"no\"");
 				break;
 				
 			default:

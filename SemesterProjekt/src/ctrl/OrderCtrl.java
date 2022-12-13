@@ -21,10 +21,11 @@ public class OrderCtrl {
 		}
 		
 		checkAlreadyScannedProductAndAdd(currProduct);
+		
 		return currProduct;
 	}
 
-	public boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
+	private boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
 		boolean res = currOrder.findOrderLineItemAndAdd(currProduct);
 		return res;
 	}
