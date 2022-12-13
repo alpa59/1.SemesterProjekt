@@ -35,15 +35,21 @@ public class Customer {
 	}
 	
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	public int getDiscount() {
 		return discount;
 =======
+=======
+>>>>>>> Stashed changes
 	public void setCredit(double newCredit) {
 		credit = newCredit;
 	}
 	public void updateCredit(double total) {
 		credit = credit - total;
 		
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	}
 	
