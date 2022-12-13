@@ -10,7 +10,7 @@ public class Composite extends AbstractProduct {
 
 	public Composite(String name, String description, String barcode, double price, double purchasePrice,
 			double nettoPrice, double weight, String category) {
-		super(name, description, barcode, price, purchasePrice, nettoPrice, weight);
+		super(name, description, barcode, purchasePrice, nettoPrice, weight);
 		this.category = category;
 		compositeLine = new LinkedList<>();
 	}
@@ -25,6 +25,15 @@ public class Composite extends AbstractProduct {
 		for(CompositeLine cl: compositeLine) {
 			cl.getAbstractProduct().updateInventory(cl.getAmount());
 			res = true;
+		}
+		return res;
+	}
+
+	@Override
+	public double getPrice() {
+		double res = 0;
+		for(CompositeLine cl : compositeLine) {
+			res += cl.getAbstractProduct().getPrice();
 		}
 		return res;
 	}

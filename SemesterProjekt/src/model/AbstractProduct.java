@@ -6,19 +6,17 @@ public abstract class AbstractProduct {
 	private String name;
 	private String description;
 	private String barcode;
-	private double price;
 	private double purchasePrice;
 	private double nettoPrice;
 	private double weight;
 	private List<CompositeLine> compositeLines;
 
-	public AbstractProduct(String name, String description, String barcode, double price, double purchasePrice,
+	public AbstractProduct(String name, String description, String barcode, double purchasePrice,
 			double nettoPrice, double weight) {
-		super();
+		
 		this.name = name;
 		this.description = description;
 		this.barcode = barcode;
-		this.price = price;
 		this.purchasePrice = purchasePrice;
 		this.nettoPrice = nettoPrice;
 		this.weight = weight;
@@ -32,9 +30,8 @@ public abstract class AbstractProduct {
 		this.barcode = barcode;
 	}
 	
-	public double getPrice() {
-		return price;
-	}
+	protected abstract double getPrice();
+	
 	protected abstract boolean updateInventory(int quantity);
 	
 }

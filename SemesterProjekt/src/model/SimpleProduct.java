@@ -7,11 +7,13 @@ public class SimpleProduct extends AbstractProduct {
 
 	private int minStock;
 	private int maxStock;
+	private double price;
 	private List<InventoryLocationLine> ills;
 
 	public SimpleProduct(String name, String description, String barcode, double price, double purchasePrice,
 			double nettoPrice, double weight, int minStock, int maxStock) {
-		super(name, description, barcode, price, purchasePrice, nettoPrice, weight);
+		super(name, description, barcode, purchasePrice, nettoPrice, weight);
+		this.price = price;
 		this.minStock = minStock;
 		this.maxStock = maxStock;
 		ills = new LinkedList<>();
@@ -39,5 +41,12 @@ public class SimpleProduct extends AbstractProduct {
 
 		return res;
 	}
+
+	@Override
+	public double getPrice() {
+		return price;
+	}
+
+	
 
 }
