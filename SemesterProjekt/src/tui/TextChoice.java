@@ -75,4 +75,9 @@ public class TextChoice<T> {
 			addOption(t[i]);
 		}
 	}
+
+	public void clearOptions() {
+		options = new LinkedList<>();
+		
+	}
 }
