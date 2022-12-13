@@ -32,9 +32,10 @@ public class OrderCtrl {
 	public boolean checkCreditAndPay() {
 		boolean res = false;
 		double total = currOrder.calculateTotal();
-		if (currOrder.getCustomer().getCredit() <= total) {
-			res = true; // TODO make it actually pay
-		}
+		if (currOrder.getCustomer().getCredit() >= total) {
+			currOrder.getCustomer().updateCredit(total);
+			res = true;
+		} 
 
 		return res;
 	}
