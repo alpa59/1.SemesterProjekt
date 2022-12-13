@@ -54,7 +54,9 @@ public class OrderCtrl {
 
 	public void confirmOrder() {
 		updateInventory(); 
+		OrderCont.getInstance().addOrder(currOrder);
 	}
+
 
 	public void updateInventory() {
 		ProductCtrl pc = new ProductCtrl();

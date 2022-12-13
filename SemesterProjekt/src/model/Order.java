@@ -15,7 +15,6 @@ public class Order {
 	private Payment payment;
 
 	public Order(Personel currPersonel) {
-		this.orderId = 1; // TODO make orderID count
 		this.date = LocalDate.now();
 		cashier = currPersonel;
 	}
@@ -29,7 +28,6 @@ public class Order {
 			} else {
 				OrderLine ol = new OrderLine(abstractProduct);
 				this.addOrderLine(ol);
-				
 
 			}
 		}
@@ -54,10 +52,22 @@ public class Order {
 		for (int i = 0; i < orderLines.size(); i++) {
 			total = +orderLines.get(i).getAbstractProduct().getPrice();
 		}
+		total = total * calculateDiscountOnCustomer(customer);
 		return total;
 
 	}
-	
+
+	private double calculateDiscountOnCustomer(Customer customer) {
+		double discount = 0;
+		if (customer != null) {
+			discount = customer.getDiscount();
+			discount = discount / 100;
+		} else {
+			discount = 1;
+		}
+		return discount;
+	}
+
 	public List<OrderLine> getOrderLines() {
 		return orderLines;
 	}
@@ -76,6 +86,10 @@ public class Order {
 
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
 }

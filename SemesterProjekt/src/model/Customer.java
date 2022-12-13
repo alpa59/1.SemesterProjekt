@@ -35,5 +35,9 @@ public class Customer {
 		return credit;
 	}
 	
+	public int getDiscount() {
+		return discount;
+	}
+	
 	
 }
