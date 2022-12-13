@@ -12,8 +12,7 @@ public class Customer {
 	private int pincode;
 	
 	
-	public Customer(String customerID, String name, String email, String phoneNumber, String address, int discount,
-			double credit, int pincode) {
+	public Customer(String customerID, String name, String email, String phoneNumber, String address, int discount, int pincode) {
 		super();
 		this.customerID = customerID;
 		this.name = name;
@@ -21,7 +20,7 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.discount = discount;
-		this.credit = credit;
+		this.credit = 10000;
 		this.pincode = pincode;
 	}
 	public String getPhoneNumber() {
@@ -35,8 +34,17 @@ public class Customer {
 		return credit;
 	}
 	
+<<<<<<< Updated upstream
 	public int getDiscount() {
 		return discount;
+=======
+	public void setCredit(double newCredit) {
+		credit = newCredit;
+	}
+	public void updateCredit(double total) {
+		credit = credit - total;
+		
+>>>>>>> Stashed changes
 	}
 	
 	
