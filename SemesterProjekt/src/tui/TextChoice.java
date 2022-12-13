@@ -40,6 +40,7 @@ public class TextChoice<T> {
 			numberComplaint = Integer.toString((Integer.parseInt(numberComplaint) + complaints));
 			System.out.println(numberComplaint);
 		}
+		
 		T res;
 		if(cancellable && choosenOption == 0) {
 			res = options.get(choosenOption);
