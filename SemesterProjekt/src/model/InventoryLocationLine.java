@@ -13,7 +13,11 @@ public class InventoryLocationLine {
 		inventoryLocation = new InventoryLocation(location);
 	}
 
-	public void setSimpleproduct(SimpleProduct simpleProduct) {
+	public SimpleProduct getSimpleProduct() {
+		return simpleProduct;
+	}
+
+	public void setSimpleProduct(SimpleProduct simpleProduct) {
 		this.simpleProduct = simpleProduct;
 	}
 
@@ -25,9 +29,19 @@ public class InventoryLocationLine {
 		}
 		return res;
 	}
-	
+
 	public int getAmount() {
 		return amount;
 	}
+
+	public InventoryLocation getInventoryLocation() {
+		return inventoryLocation;
+	}
+
+	public void setInventoryLocation(InventoryLocation inventoryLocation) {
+		this.inventoryLocation = inventoryLocation;
+	}
+	
+	
 
 }

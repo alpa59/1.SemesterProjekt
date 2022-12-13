@@ -12,9 +12,14 @@ public class OrderCtrl {
 		return o;
 	}
 
-	public AbstractProduct scanProduct(String barcode) {
-		AbstractProduct currProduct = null;
-		currProduct = new ProductCtrl().findProduct(barcode);
+	public AbstractProduct scanProduct(String barcode) throws scannedProductFailedException {
+
+		AbstractProduct currProduct = new ProductCtrl().findProduct(barcode);
+
+		if (currProduct == null) {
+			throw new scannedProductFailedException("Could not scan the product", null);
+		}
+		
 		checkAlreadyScannedProductAndAdd(currProduct);
 		return currProduct;
 	}
@@ -23,14 +28,14 @@ public class OrderCtrl {
 		boolean res = currOrder.findOrderLineItem(currProduct);
 		return res;
 	}
-	
+
 	public boolean checkCreditAndPay() {
 		boolean res = false;
 		double total = currOrder.calculateTotal();
-		if(currOrder.getCustomer().getCredit() <= total) {
-			res = true; //TODO make it actually pay
+		if (currOrder.getCustomer().getCredit() <= total) {
+			res = true; // TODO make it actually pay
 		}
-		
+
 		return res;
 	}
 
@@ -46,19 +51,17 @@ public class OrderCtrl {
 	public void choosePayment(Payment payment) {
 		currOrder.setPayment(payment);
 	}
-	
+
 	public void confirmOrder() {
 		updateInventory();
 	}
-	
+
 	public void updateInventory() {
 		ProductCtrl pc = new ProductCtrl();
-		for(int i = 0; i < currOrder.getOrderLines().size();i++){
+		for (int i = 0; i < currOrder.getOrderLines().size(); i++) {
 			AbstractProduct res = currOrder.getOrderLines().get(i).getAbstractProduct();
 			pc.updateInventory(res, currOrder.getOrderLines().get(i).getAmount());
 		}
 	}
-	
+
 }
-
-
