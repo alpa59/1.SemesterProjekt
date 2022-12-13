@@ -1,4 +1,4 @@
-package ctrlTest;
+package test;
 import ctrl.*;
 import model.*;
 import static org.junit.jupiter.api.Assertions.*;
