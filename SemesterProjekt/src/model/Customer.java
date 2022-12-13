@@ -10,9 +10,9 @@ public class Customer {
 	private int discount;
 	private double credit;
 	private int pincode;
-	
-	
-	public Customer(String customerID, String name, String email, String phoneNumber, String address, int discount, int pincode) {
+
+	public Customer(String customerID, String name, String email, String phoneNumber, String address, int discount,
+			int pincode) {
 		super();
 		this.customerID = customerID;
 		this.name = name;
@@ -23,35 +23,30 @@ public class Customer {
 		this.credit = 10000;
 		this.pincode = pincode;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+
 	public double getCredit() {
 		return credit;
 	}
-	
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
 	public int getDiscount() {
 		return discount;
-=======
-=======
->>>>>>> Stashed changes
+	}
+
 	public void setCredit(double newCredit) {
 		credit = newCredit;
 	}
+
 	public void updateCredit(double total) {
 		credit = credit - total;
-		
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
 	}
-	
-	
+
 }
