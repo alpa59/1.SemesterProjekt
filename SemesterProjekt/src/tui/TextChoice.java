@@ -15,6 +15,7 @@ public class TextChoice<T> {
 		this.title = title;
 		options = new LinkedList<>();
 		this.r = r;
+		numberComplaint = "0";
 	}
 	
 	public T prompt(String prompt, boolean cancellable) {
@@ -32,24 +33,26 @@ public class TextChoice<T> {
 		
 		int choosenOption = ti.promptInt(prompt, null);
 		while((cancellable && choosenOption <= 0 && choosenOption > options.size())
-				|| (!cancellable && choosenOption < 1 && choosenOption > options.size())) {
+				|| (!cancellable && choosenOption < 1 || choosenOption > options.size())) {
 			System.out.println("Choose viable number");
 			int complaints = 0;
 			complaints++;
-			ti.promptInt(prompt,"" + (complaints));
-			numberComplaint = Integer.toString((Integer.parseInt(numberComplaint) + complaints));
+			choosenOption = ti.promptInt(prompt,"" + (complaints));
+			
+			int tempComplaint = Integer.parseInt(numberComplaint) + complaints;
+			numberComplaint = Integer.toString(tempComplaint);
+			
 			System.out.println(numberComplaint);
 		}
 		
 		T res;
-		if(cancellable && choosenOption == 0) {
-			res = options.get(choosenOption);
+		if(cancellable && choosenOption <= 0) {
+			res = null;
 		}
 		else {
 			 res = options.get(choosenOption-1);
 		}
-		
-		
+	
 		return res;
 		
 	}

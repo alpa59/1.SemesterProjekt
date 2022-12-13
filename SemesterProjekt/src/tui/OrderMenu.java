@@ -6,12 +6,12 @@ import model.Personel;
 
 public class OrderMenu {
 	private OrderCtrl orderCtrl;
-	private boolean isFinnishedScanningItems, scannedOneItem, cancelled;
+	private boolean isFinnishedScanningItems, scannedOneItem;
 
 	public OrderMenu() {
 		orderCtrl = new OrderCtrl();
 		isFinnishedScanningItems = false;
-		cancelled = false;
+		boolean cancelled = false;
 		createOrder();
 
 		StringRenderer r = new StringRenderer();
@@ -21,9 +21,13 @@ public class OrderMenu {
 
 		while (!isFinnishedScanningItems && !cancelled) {
 
-			String input = tc.prompt("Scan next item", true).toLowerCase();
-
-			checkInput(input);
+			String input = tc.prompt("Choose option", true);
+			if (input != null) {
+				checkInput(input.toLowerCase());
+			} else {
+				cancelled = true;
+				System.out.println("Order is cancelled");
+			}
 
 		}
 
@@ -49,9 +53,6 @@ public class OrderMenu {
 	private void checkInput(String input) {
 
 		switch (input) {
-		case "cancel":
-			cancelled = true;
-			break;
 		case "scan next item":
 			TextInput ti = new TextInput();
 			String scannedItem = ti.promptString("Scan item");
@@ -61,8 +62,6 @@ public class OrderMenu {
 			} catch (ScannedProductFailedException e) {
 				System.out.println("Could not scan item");
 			}
-			
-
 			break;
 		case "finished scanning":
 			if (scannedOneItem) {
