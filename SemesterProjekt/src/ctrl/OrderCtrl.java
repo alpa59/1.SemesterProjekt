@@ -43,7 +43,9 @@ public class OrderCtrl {
 
 	public Customer findCustomerByNumber(String phone) {
 		CustomerCtrl cc = new CustomerCtrl();
-		return cc.findCustomerByNumber(phone);
+		Customer c =  cc.findCustomerByNumber(phone);
+		currOrder.setCustomer(c);
+		return c;
 	}
 
 	public void chooseDeliveryAddress(String address) {

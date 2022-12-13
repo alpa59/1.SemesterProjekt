@@ -35,9 +35,16 @@ class OrderCtrlTest {
 	}
 
 	@Test
-	void checkCreditAndPayTest() {
+	void checkCreditAndPayTest() throws ScannedProductFailedException {
 		//arrange
+		generateTestData();
+		oc.createOrder(null);
+		oc.scanProduct("1");
+		oc.scanProduct("2");
+		oc.scanProduct("2");
+		oc.scanProduct("5");
 		//act
+		oc.checkCreditAndPay();
 		//assert
 	}
 	
@@ -55,6 +62,9 @@ class OrderCtrlTest {
 		ProductCont.getInstance().addProduct(p3);
 		ProductCont.getInstance().addProduct(p4);
 		ProductCont.getInstance().addProduct(p5);
+		
+		Customer c = new Customer("1", null, null, "1234", null, 20, 0);
+		CustomerCont.getInstance().add(c);
 		
 	}
 }

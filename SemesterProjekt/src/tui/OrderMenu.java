@@ -59,6 +59,7 @@ public class OrderMenu {
 			Object item;
 			try {
 				item = orderCtrl.scanProduct(scannedItem);
+				scannedOneItem = true;
 			} catch (ScannedProductFailedException e) {
 				System.out.println("Could not scan item");
 			}

@@ -21,7 +21,7 @@ public class CustomerCont {
 		customer = new ArrayList<>();
 	}
 
-	public void addPerson(Customer c) {
+	public void add(Customer c) {
 		customer.add(c);
 	}
 	
@@ -34,5 +34,7 @@ public class CustomerCont {
 		}
 		return res;
 	}
+
+	
 
 }
