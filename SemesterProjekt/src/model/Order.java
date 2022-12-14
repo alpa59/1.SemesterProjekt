@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
@@ -59,6 +60,8 @@ public class Order {
 		}
 		double discount = calculateDiscountOnCustomer(customer);
 		total *= discount;
+		
+		totalPrice = total;
 		return total;
 
 	}
@@ -68,7 +71,8 @@ public class Order {
 		if (customer != null) {
 			if (customer.getDiscount() != 0) {
 				discount = customer.getDiscount();
-				discount = discount / 100;
+				discount = 1-(discount / 100);
+				
 			}
 		}
 		return discount;
@@ -102,12 +106,19 @@ public class Order {
 		StringBuilder ress = new StringBuilder();
 		ress.append("Order: ");
 		ress.append(orderId);
+		
 		for (OrderLine ol : orderLines) {
 			ress.append("\nAmount: ");
 			ress.append(ol.getAmount());
 			ress.append("\t Product: ");
 			ress.append(ol.getAbstractProduct().getDescription());
 		}
+		DecimalFormat df = new DecimalFormat("#.00");
+		ress.append("\nTotal: ");
+		ress.append(df.format(totalPrice));
+		ress.append("\n\n Serviced by <<");
+		ress.append(cashier.getName());
+		ress.append(">>");
 
 		return ress.toString();
 	}

@@ -14,6 +14,10 @@ public class Personel {
 		this.email = email;
 		this.title = title;
 	}
+	
+	public String getName() {
+		return name;		
+	}
 
 	
 
