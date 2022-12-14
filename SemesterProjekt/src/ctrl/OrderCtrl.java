@@ -20,7 +20,7 @@ public class OrderCtrl {
 	/**
 	 * Scans a product based on its barcode and adds it to the order
 	 * @param barcode
-	 * @return currProduct
+	 * @return AbstractProduct
 	 * @throws ScannedProductFailedException
 	 */
 	public AbstractProduct scanProduct(String barcode) throws ScannedProductFailedException {
