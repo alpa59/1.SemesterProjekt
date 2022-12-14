@@ -29,15 +29,26 @@ class ProductCtrlTest {
 	@Test
 	void updateInventoryTest() {
 		//arrange
-		ProductCont prodCont = ProductCont.getInstance();
 		SimpleProduct simpProd = new SimpleProduct("Kage","Usund","2345",20,40,1,50,99,1);
-		InventoryLocation il = new InventoryLocation("Nordpolen");
-		InventoryLocationLine ill = new InventoryLocationLine(1,simpProd,"Nordpolen");
-		ill.setInventoryLocation(il);
-		prodCont.addProduct(simpProd);
+		simpProd.createInventoryLocation(5,"Nordpolen");
+		ProductCont.getInstance().addProduct(simpProd);
 		//act
-		prodCont.findProductAndUpdateQuantity(simpProd, 1);
+		ProductCont.getInstance().findProductAndUpdateQuantity(simpProd, -1);
+		InventoryLocationLine ill = simpProd.findInventoryLocationline("Nordpolen");
 		//assert
-		assertEquals(ill.getAmount(),1);
+		assertEquals(4,ill.getAmount());
+	}
+	
+	@Test
+	void updateInventoryTest2() {
+		//arrange
+		SimpleProduct simpProd = new SimpleProduct("Kage","Usund","2345",20,40,1,50,99,1);
+		simpProd.createInventoryLocation(5,"Nordpolen");
+		ProductCont.getInstance().addProduct(simpProd);
+		//act
+		ProductCont.getInstance().findProductAndUpdateQuantity(simpProd, 2);
+		InventoryLocationLine ill = simpProd.findInventoryLocationline("Nordpolen");
+		//assert
+		assertEquals(7,ill.getAmount());
 	}
 }
