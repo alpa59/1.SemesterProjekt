@@ -23,6 +23,14 @@ public class Order {
 
 	}
 
+	/**
+	 * @param abstractProduct
+	 * 
+	 * This methord checks if an Orderline with exits with the given argument.
+	 * if not found, then it adds an new OrderLine to list: orderLines
+	 * 
+	 * @return Simulates finding an OrderLine, with true/false
+	 */
 	public boolean findOrderLineItemAndAdd(AbstractProduct abstractProduct) {
 		boolean res = false;
 		for (int i = 0; i < orderLines.size(); i++) {
@@ -39,7 +47,7 @@ public class Order {
 
 		return res;
 	}
-
+	
 	public void addOrderLine(OrderLine orderLine) {
 		orderLines.add(orderLine);
 
@@ -52,6 +60,11 @@ public class Order {
 	public void setAddress(String deliveryLocation) {
 		this.deliveryLocation = deliveryLocation;
 	}
+	
+	/**
+	 * This methord calculates the total price of the order.
+	 * @return TotalPrice
+	 */
 
 	public double calculateTotal() {
 		double total = 0;
@@ -66,7 +79,7 @@ public class Order {
 
 	}
 
-	public double calculateDiscountOnCustomer(Customer customer) {
+	private double calculateDiscountOnCustomer(Customer customer) {
 		double discount = 1;
 		if (customer != null) {
 			if (customer.getDiscount() != 0) {
