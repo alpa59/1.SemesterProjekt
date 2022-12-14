@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import model.AbstractProduct;
 import model.Customer;
 import model.CustomerCont;
+import model.InventoryLocation;
 import model.InventoryLocationLine;
 import model.ProductCont;
 import model.SimpleProduct;
@@ -30,11 +31,12 @@ class ProductCtrlTest {
 		//arrange
 		ProductCont prodCont = ProductCont.getInstance();
 		SimpleProduct simpProd = new SimpleProduct("Kage","Usund","2345",20,40,1,50,99,1);
-		InventoryLocationLine ill = new InventoryLocationLine(1,simpProd,null);
+		InventoryLocation il = new InventoryLocation("Nordpolen");
+		InventoryLocationLine ill = new InventoryLocationLine(1,simpProd,"Nordpolen");
 		prodCont.addProduct(simpProd);
 		//act
 		prodCont.findProductAndUpdateQuantity(simpProd, 1);
 		//assert
-		
+		assertEquals(ill.getAmount(),1);
 	}
 }
