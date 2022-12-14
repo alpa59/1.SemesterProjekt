@@ -1,7 +1,7 @@
 package tui;
 
 import ctrl.*;
-
+import model.Payment;
 import model.Personel;
 
 public class OrderMenu {
@@ -36,6 +36,8 @@ public class OrderMenu {
 
 			orderCtrl.confirmOrder();
 		}
+		
+		System.out.println(orderCtrl.printOrder());
 
 	}
 
@@ -99,18 +101,23 @@ public class OrderMenu {
 
 	private void setAddress() {
 		TextInput ti = new TextInput();
-		String address = ti.promptString("Whats is your phone number");
+		String address = ti.promptString("Whats is your address");
 		orderCtrl.chooseDeliveryAddress(address);
 
 	}
 
 	private void choosePayment() {
 		TextInput ti = new TextInput();
-		boolean payByCredit = ti.promptBoolean("Pay by credit? or instore purchase?");
+		boolean payByCredit = ti.promptBoolean("Pay by credit");
 		if (payByCredit) {
 			boolean haveCredit = orderCtrl.checkCreditAndPay();
 			if (!haveCredit) {
 				payInStore();
+			}
+			else {
+				
+				
+				orderCtrl.choosePayment(Payment.INVOICE);
 			}
 		} else {
 			payInStore();
@@ -120,6 +127,7 @@ public class OrderMenu {
 
 	private void payInStore() {
 		System.out.println("Pay in store");
+		orderCtrl.choosePayment(Payment.INSTORE);
 
 	}
 
