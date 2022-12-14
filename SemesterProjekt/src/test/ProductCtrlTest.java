@@ -33,6 +33,7 @@ class ProductCtrlTest {
 		SimpleProduct simpProd = new SimpleProduct("Kage","Usund","2345",20,40,1,50,99,1);
 		InventoryLocation il = new InventoryLocation("Nordpolen");
 		InventoryLocationLine ill = new InventoryLocationLine(1,simpProd,"Nordpolen");
+		ill.setInventoryLocation(il);
 		prodCont.addProduct(simpProd);
 		//act
 		prodCont.findProductAndUpdateQuantity(simpProd, 1);
