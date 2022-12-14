@@ -33,7 +33,6 @@ public class OrderMenu {
 
 		if (!cancelled) {
 			checkIsCustomer();
-
 			orderCtrl.confirmOrder();
 		}
 
