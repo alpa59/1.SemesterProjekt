@@ -55,7 +55,7 @@ public class OrderCtrl {
 	public void choosePayment(Payment payment) {
 		currOrder.setPayment(payment);
 	}
-s
+
 	public void confirmOrder() {
 		updateInventory(); 
 		OrderCont.getInstance().addOrder(currOrder);

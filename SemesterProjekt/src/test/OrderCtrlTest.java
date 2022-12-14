@@ -38,14 +38,21 @@ class OrderCtrlTest {
 	void checkCreditAndPayTest() throws ScannedProductFailedException {
 		//arrange
 		generateTestData();
-		oc.createOrder(null);
+		Order currOrder = oc.createOrder(null);
 		oc.scanProduct("1");
 		oc.scanProduct("2");
 		oc.scanProduct("2");
 		oc.scanProduct("5");
 		//act
+		oc.findCustomerByNumber("1234");
 		oc.checkCreditAndPay();
+		double cr = currOrder.getCustomer().getCredit();
 		//assert
+		assertEquals(cr,9811);
+		assertTrue(true);
+		
+		
+		
 	}
 	
 	void findCustomerByNumber() {
