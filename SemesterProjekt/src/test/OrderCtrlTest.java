@@ -41,8 +41,10 @@ class OrderCtrlTest {
 		Order currOrder = oc.createOrder(null);
 		oc.scanProduct("1");
 		oc.scanProduct("2");
-		oc.scanProduct("2");
+		oc.scanProduct("3");
+		oc.scanProduct("4");
 		oc.scanProduct("5");
+		oc.scanProduct("6");
 		//act
 		oc.findCustomerByNumber("1234");
 		oc.checkCreditAndPay();
@@ -81,7 +83,7 @@ class OrderCtrlTest {
 		ProductCont.getInstance().addProduct(p4);
 		ProductCont.getInstance().addProduct(p5);
 		
-		Customer c = new Customer("1", null, null, "1234", null, 20, 0);
+		Customer c = new Customer("1", null, null, "1234", null, 1, 0);
 		CustomerCont.getInstance().add(c);
 		
 	}

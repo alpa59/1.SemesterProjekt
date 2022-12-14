@@ -21,9 +21,11 @@ class OrderTest {
 		
 		order = new Order(null);
 		// act
-		boolean result = order.findOrderLineItemAndAdd(p);
-		boolean result1 = order.findOrderLineItemAndAdd(p);
 		// assert
+		boolean result = order.findOrderLineItemAndAdd(p);
+		assertFalse(result);
+		
+		boolean result1 = order.findOrderLineItemAndAdd(p);
 		assertTrue(result1);
 		
 		
