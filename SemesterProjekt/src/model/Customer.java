@@ -45,7 +45,7 @@ public class Customer {
 	}
 
 	public void updateCredit(double total) {
-		credit = credit - total;
+		this.credit-=total;
 
 	}
 

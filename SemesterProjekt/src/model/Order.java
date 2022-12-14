@@ -28,12 +28,14 @@ public class Order {
 			if (orderLines.get(i).getAbstractProduct().equals(abstractProduct)) {
 				orderLines.get(i).increaseQtyByOne();
 				res = true;
-			} else {
-				OrderLine ol = new OrderLine(abstractProduct);
-				this.addOrderLine(ol);
-
 			}
 		}
+		
+		if(!res) {
+			OrderLine ol = new OrderLine(abstractProduct);
+			addOrderLine(ol);
+		}
+		
 		return res;
 	}
 
@@ -51,11 +53,14 @@ public class Order {
 	}
 
 	public double calculateTotal() {
-		double total = 0.0;
+		double total = 0;
 		for (int i = 0; i < orderLines.size(); i++) {
-			total = +orderLines.get(i).getAbstractProduct().getPrice();
+			total+= orderLines.get(i).getAbstractProduct().getPrice();
 		}
-		total = total * calculateDiscountOnCustomer(customer);
+		if(customer !=null) {
+			double discount = calculateDiscountOnCustomer(customer);
+			total*= discount;
+		}
 		return total;
 
 	}
@@ -96,13 +101,18 @@ public class Order {
 	}
 
 	public String printOrder() {
-		String ress = "";
+		StringBuilder ress = new StringBuilder();
+		ress.append("Order: ");
+		ress.append(orderId);
 		for(OrderLine ol : orderLines) {
-			
+			ress.append("\nAmount: ");
+			ress.append(ol.getAmount());
+			ress.append("\t Product: ");
+			ress.append(ol.getAbstractProduct().getDescription());
 		}
 		
 		
-		return ress;
+		return ress.toString();
 	}
 
 }
