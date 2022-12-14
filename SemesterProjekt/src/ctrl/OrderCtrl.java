@@ -72,7 +72,7 @@ public class OrderCtrl {
 
 	public String printOrder() {
 		String ress = currOrder.printOrder();
-		return null;
+		return ress;
 	}
 
 }
