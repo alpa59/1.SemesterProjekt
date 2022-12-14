@@ -28,12 +28,14 @@ public class Order {
 			if (orderLines.get(i).getAbstractProduct().equals(abstractProduct)) {
 				orderLines.get(i).increaseQtyByOne();
 				res = true;
-			} else {
-				OrderLine ol = new OrderLine(abstractProduct);
-				this.addOrderLine(ol);
-
 			}
 		}
+		
+		if(!res) {
+			OrderLine ol = new OrderLine(abstractProduct);
+			addOrderLine(ol);
+		}
+		
 		return res;
 	}
 
@@ -96,13 +98,18 @@ public class Order {
 	}
 
 	public String printOrder() {
-		String ress = "";
+		StringBuilder ress = new StringBuilder();
+		ress.append("Order: ");
+		ress.append(orderId);
 		for(OrderLine ol : orderLines) {
-			
+			ress.append("\nAmount: ");
+			ress.append(ol.getAmount());
+			ress.append("\t Product: ");
+			ress.append(ol.getAbstractProduct().getDescription());
 		}
 		
 		
-		return ress;
+		return ress.toString();
 	}
 
 }
