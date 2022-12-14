@@ -95,4 +95,14 @@ public class Order {
 		this.orderId = orderId;
 	}
 
+	public String printOrder() {
+		String ress = "";
+		for(OrderLine ol : orderLines) {
+			
+		}
+		
+		
+		return ress;
+	}
+
 }
