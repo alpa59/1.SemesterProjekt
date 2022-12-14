@@ -19,7 +19,7 @@ public class Order {
 		this.date = LocalDate.now();
 		cashier = currPersonel;
 		orderLines = new LinkedList<>();
-		
+
 	}
 
 	public boolean findOrderLineItemAndAdd(AbstractProduct abstractProduct) {
@@ -30,12 +30,12 @@ public class Order {
 				res = true;
 			}
 		}
-		
-		if(!res) {
+
+		if (!res) {
 			OrderLine ol = new OrderLine(abstractProduct);
 			addOrderLine(ol);
 		}
-		
+
 		return res;
 	}
 
@@ -55,23 +55,21 @@ public class Order {
 	public double calculateTotal() {
 		double total = 0;
 		for (int i = 0; i < orderLines.size(); i++) {
-			total+= orderLines.get(i).getAbstractProduct().getPrice();
+			total += orderLines.get(i).getAbstractProduct().getPrice();
 		}
-		if(customer !=null) {
-			double discount = calculateDiscountOnCustomer(customer);
-			total*= discount;
-		}
+		double discount = calculateDiscountOnCustomer(customer);
+		total *= discount;
 		return total;
 
 	}
 
-	private double calculateDiscountOnCustomer(Customer customer) {
-		double discount = 0;
+	public double calculateDiscountOnCustomer(Customer customer) {
+		double discount = 1;
 		if (customer != null) {
-			discount = customer.getDiscount();
-			discount = discount / 100;
-		} else {
-			discount = 1;
+			if (customer.getDiscount() != 0) {
+				discount = customer.getDiscount();
+				discount = discount / 100;
+			}
 		}
 		return discount;
 	}
@@ -104,15 +102,17 @@ public class Order {
 		StringBuilder ress = new StringBuilder();
 		ress.append("Order: ");
 		ress.append(orderId);
-		for(OrderLine ol : orderLines) {
+		for (OrderLine ol : orderLines) {
 			ress.append("\nAmount: ");
 			ress.append(ol.getAmount());
 			ress.append("\t Product: ");
 			ress.append(ol.getAbstractProduct().getDescription());
 		}
-		
-		
+
 		return ress.toString();
 	}
 
+	public double getTotalPrice() {
+		return totalPrice;
+	}
 }

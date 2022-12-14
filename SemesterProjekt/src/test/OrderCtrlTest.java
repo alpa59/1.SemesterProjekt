@@ -51,7 +51,6 @@ class OrderCtrlTest {
 		double cr = currOrder.getCustomer().getCredit();
 		//assert
 		assertEquals(cr,9811);
-		assertTrue(true);
 		
 		
 		
@@ -83,7 +82,7 @@ class OrderCtrlTest {
 		ProductCont.getInstance().addProduct(p4);
 		ProductCont.getInstance().addProduct(p5);
 		
-		Customer c = new Customer("1", null, null, "1234", null, 1, 0);
+		Customer c = new Customer("1", null, null, "1234", null, 0, 0);
 		CustomerCont.getInstance().add(c);
 		
 	}
