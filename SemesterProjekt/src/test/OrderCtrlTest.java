@@ -48,6 +48,17 @@ class OrderCtrlTest {
 		//assert
 	}
 	
+	void findCustomerByNumber() {
+		//arrange
+		Customer c = new Customer("1", null, null, "1234", null, 20, 0);
+		CustomerCont.getInstance().add(c);
+		Customer c1 = oc.findCustomerByNumber("1234");
+		//act
+		
+		//assert
+		assertEquals(c,c1);
+	}
+	
 	void generateTestData() {
 		AbstractProduct p = new SimpleProduct("test1", "simp1", "1", 12,54321, 655, 5454, 454, 45);
 		AbstractProduct p1 = new SimpleProduct("test2", "simp2", "2", 13, 12312, 454, 4545, 045, 4545);
