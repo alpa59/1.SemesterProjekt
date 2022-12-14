@@ -73,6 +73,7 @@ class OrderCtrlTest {
 	}
 	
 	void generateTestData() {
+		System.out.println("GenerateTestData");
 		AbstractProduct p = new SimpleProduct("test1", "simp1", "1", 12,54321, 655, 5454, 454, 45);
 		AbstractProduct p1 = new SimpleProduct("test2", "simp2", "2", 13, 12312, 454, 4545, 045, 4545);
 		AbstractProduct p2= new SimpleProduct("test3", "simp3", "3", 14, 1231231, 4545, 0445, 4540, 4540);
@@ -80,7 +81,7 @@ class OrderCtrlTest {
 		AbstractProduct p4 = new SimpleProduct("test5", "simp5", "5", 12,213123, 454330, 54540, 3434 , 0555);
 		AbstractProduct p5 = new SimpleProduct("test6", "simp6", "6", 123, 2323, 6660,777, 8880, 9990);
 		
-		AbstractProduct com = new Composite("comTest", "comtest1", "unik", 100, 50, 10, 30, "køkken");
+		AbstractProduct com = new Composite("comTest", "comtest1", "lol", 100, 50, 10, 30, "køkken");
 		
 		
 		
