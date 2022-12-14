@@ -37,4 +37,8 @@ public class Composite extends AbstractProduct {
 		}
 		return res;
 	}
+	
+	public List<CompositeLine> getList() {
+		return compositeLine;
+	}
 }
