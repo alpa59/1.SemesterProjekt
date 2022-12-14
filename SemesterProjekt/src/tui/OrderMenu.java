@@ -36,7 +36,7 @@ public class OrderMenu {
 
 			orderCtrl.confirmOrder();
 		}
-		
+
 		System.out.println(orderCtrl.printOrder());
 
 	}
@@ -87,16 +87,24 @@ public class OrderMenu {
 	}
 
 	private void handleCustomer() {
-		findCustomerByPhone();
-		setAddress();
-		choosePayment();
+		boolean goOn = findCustomerByPhone();
+		if (goOn) {
+			setAddress();
+			choosePayment();
+		}
+		else {
+			System.out.println("Could not find customer. Try again");
+			handleCustomer();
+		}
 	}
 
-	private void findCustomerByPhone() {
+	private boolean findCustomerByPhone() {
 
 		TextInput ti = new TextInput();
 		String phone = ti.promptString("Whats is your phone number");
-		orderCtrl.findCustomerByNumber(phone);
+		Object c = orderCtrl.findCustomerByNumber(phone);
+		boolean ress = c != null ? true : false;
+		return ress;
 	}
 
 	private void setAddress() {
@@ -113,10 +121,8 @@ public class OrderMenu {
 			boolean haveCredit = orderCtrl.checkCreditAndPay();
 			if (!haveCredit) {
 				payInStore();
-			}
-			else {
-				
-				
+			} else {
+
 				orderCtrl.choosePayment(Payment.INVOICE);
 			}
 		} else {
