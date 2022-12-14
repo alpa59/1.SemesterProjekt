@@ -6,12 +6,23 @@ public class OrderCtrl {
 
 	private Order currOrder;
 
+	/**
+	 * Creates a new order
+	 * @param currPersonel
+	 * @return currOrder o
+	 */
 	public Order createOrder(Personel currPersonel) {
 		Order o = new Order(currPersonel);
 		currOrder = o;
 		return o;
 	}
-
+	
+	/**
+	 * Scans a product based on its barcode and adds it to the order
+	 * @param barcode
+	 * @return currProduct
+	 * @throws ScannedProductFailedException
+	 */
 	public AbstractProduct scanProduct(String barcode) throws ScannedProductFailedException {
 
 		AbstractProduct currProduct = new ProductCtrl().findProduct(barcode);
@@ -24,12 +35,21 @@ public class OrderCtrl {
 		
 		return currProduct;
 	}
-
+	
+	/**
+	 * Checks whether the selected product is already scanned and adds it to the order if necessary
+	 * @param currProduct
+	 * @return res
+	 */
 	private boolean checkAlreadyScannedProductAndAdd(AbstractProduct currProduct) {
 		boolean res = currOrder.findOrderLineItemAndAdd(currProduct);
 		return res;
 	}
-
+	
+	/**
+	 * Checks whether the customer has enough store credit for the purchase and pays for the order if so
+	 * @return res
+	 */
 	public boolean checkCreditAndPay() {
 		boolean res = false;
 		double total = currOrder.calculateTotal();
@@ -40,14 +60,19 @@ public class OrderCtrl {
 
 		return res;
 	}
-
+	
+	/**
+	 * Finds a customer based on their phone number in the current order
+	 * @param phone
+	 * @return
+	 */
 	public Customer findCustomerByNumber(String phone) {
 		CustomerCtrl cc = new CustomerCtrl();
 		Customer c =  cc.findCustomerByNumber(phone);
 		currOrder.setCustomer(c);
 		return c;
 	}
-
+	
 	public void chooseDeliveryAddress(String address) {
 		currOrder.setAddress(address);
 	}
@@ -61,7 +86,9 @@ public class OrderCtrl {
 		OrderCont.getInstance().addOrder(currOrder);
 	}
 
-
+	/**
+	 * Updates the inventory according to the current order
+	 */
 	public void updateInventory() {
 		ProductCtrl pc = new ProductCtrl();
 		for (int i = 0; i < currOrder.getOrderLines().size(); i++) {
