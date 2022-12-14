@@ -79,6 +79,11 @@ public class Order {
 
 	}
 
+	/**
+	 * This is a
+	 * @param customer
+	 * @return
+	 */
 	private double calculateDiscountOnCustomer(Customer customer) {
 		double discount = 1;
 		if (customer != null) {

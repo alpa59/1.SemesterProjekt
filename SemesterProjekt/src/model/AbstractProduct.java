@@ -9,7 +9,7 @@ public abstract class AbstractProduct {
 	private double purchasePrice;
 	private double nettoPrice;
 	private double weight;
-	private List<CompositeLine> compositeLines;
+	
 
 	public AbstractProduct(String name, String description, String barcode, double purchasePrice,
 			double nettoPrice, double weight) {

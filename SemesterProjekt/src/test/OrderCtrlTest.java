@@ -26,12 +26,17 @@ class OrderCtrlTest {
 	void scanProductTest() throws ScannedProductFailedException {
 		//arrange
 		AbstractProduct p = new SimpleProduct("test", "simp", "123", 0, 0, 0, 0, 0, 0);
+		AbstractProduct com = new Composite("comTest", "comtest1", "unik", 100, 50, 10, 30, "køkken");
 		oc.createOrder(null);
 		ProductCont.getInstance().addProduct(p);
+		ProductCont.getInstance().addProduct(com);
+		
 		//act
 		AbstractProduct p2 = oc.scanProduct("123");
+		AbstractProduct com1 = oc.scanProduct("unik");
 		//assert
 		assertEquals(p, p2);
+		assertEquals(com, com1);
 	}
 
 	@Test
@@ -75,12 +80,17 @@ class OrderCtrlTest {
 		AbstractProduct p4 = new SimpleProduct("test5", "simp5", "5", 12,213123, 454330, 54540, 3434 , 0555);
 		AbstractProduct p5 = new SimpleProduct("test6", "simp6", "6", 123, 2323, 6660,777, 8880, 9990);
 		
+		AbstractProduct com = new Composite("comTest", "comtest1", "unik", 100, 50, 10, 30, "køkken");
+		
+		
+		
 		ProductCont.getInstance().addProduct(p);
 		ProductCont.getInstance().addProduct(p1);
 		ProductCont.getInstance().addProduct(p2);
 		ProductCont.getInstance().addProduct(p3);
 		ProductCont.getInstance().addProduct(p4);
 		ProductCont.getInstance().addProduct(p5);
+		ProductCont.getInstance().addProduct(com);
 		
 		Customer c = new Customer("1", null, null, "1234", null, 0, 0);
 		CustomerCont.getInstance().add(c);

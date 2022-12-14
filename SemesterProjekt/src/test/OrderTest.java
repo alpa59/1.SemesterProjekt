@@ -48,24 +48,24 @@ class OrderTest {
 		
 	}
 	
-	@Test
-	void calculateDiscountOnCustomer() {
-		Order o1 = new Order(null);
-		Order o2 = new Order(null);
-		Customer c = new Customer(null, null, null, "1234", null, 0, 0);
-		Customer c1 = new Customer(null, null, null, "1234", null, 10, 0);
-		CustomerCont.getInstance().add(c1);
-		CustomerCont.getInstance().add(c);
-		o1.setCustomer(c);
-		o2.setCustomer(c1);
-		
-		//act
-		double cr = o1.calculateDiscountOnCustomer(c);
-		double cr1 = o2.calculateDiscountOnCustomer(c1);
-		
-		assertEquals(1, cr);
-		assertEquals(cr1,0.1);
-	}
+//	@Test
+//	void calculateDiscountOnCustomer() {
+//		Order o1 = new Order(null);
+//		Order o2 = new Order(null);
+//		Customer c = new Customer(null, null, null, "1234", null, 0, 0);
+//		Customer c1 = new Customer(null, null, null, "1234", null, 10, 0);
+//		CustomerCont.getInstance().add(c1);
+//		CustomerCont.getInstance().add(c);
+//		o1.setCustomer(c);
+//		o2.setCustomer(c1);
+//		
+//		//act
+//		double cr = o1.calculateDiscountOnCustomer(c);
+//		double cr1 = o2.calculateDiscountOnCustomer(c1);
+//		
+//		assertEquals(1, cr);
+//		assertEquals(cr1,0.1);
+//	}
 
 	void generateTestData() {
 		AbstractProduct p = new SimpleProduct("test1", "simp1", "1", 12, 54321, 655, 5454, 454, 45);
