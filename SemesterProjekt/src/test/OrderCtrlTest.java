@@ -80,7 +80,7 @@ class OrderCtrlTest {
 		AbstractProduct p4 = new SimpleProduct("test5", "simp5", "5", 12,213123, 454330, 54540, 3434 , 0555);
 		AbstractProduct p5 = new SimpleProduct("test6", "simp6", "6", 123, 2323, 6660,777, 8880, 9990);
 		
-		AbstractProduct com = new Composite("comTest", "comtest1", "unik", 100, 50, 10, 30, "køkken");
+		AbstractProduct com = new Composite("comTest", "comtest1", "lol", 100, 50, 10, 30, "køkken");
 		
 		
 		
