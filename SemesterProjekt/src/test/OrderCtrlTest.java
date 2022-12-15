@@ -17,7 +17,7 @@ class OrderCtrlTest {
 	void createOrderTest() {
 		//arrange
 		//act
-		Order o = oc.createOrder(null);
+		Order o = oc.createOrder();
 		//assert
 		assertNotEquals(null, o);
 	}
@@ -27,7 +27,7 @@ class OrderCtrlTest {
 		//arrange
 		AbstractProduct p = new SimpleProduct("test", "simp", "123", 0, 0, 0, 0, 0, 0);
 		AbstractProduct com = new Composite("comTest", "comtest1", "unik", 100, 50, 10, 30, "køkken");
-		oc.createOrder(null);
+		oc.createOrder();
 		ProductCont.getInstance().addProduct(p);
 		ProductCont.getInstance().addProduct(com);
 		
@@ -43,7 +43,7 @@ class OrderCtrlTest {
 	void checkCreditAndPayTest() throws ScannedProductFailedException {
 		//arrange
 		generateTestData();
-		Order currOrder = oc.createOrder(null);
+		Order currOrder = oc.createOrder();
 		oc.scanProduct("1");
 		oc.scanProduct("2");
 		oc.scanProduct("3");

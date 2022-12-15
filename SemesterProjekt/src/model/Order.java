@@ -108,7 +108,7 @@ public class Order {
 		DecimalFormat df = new DecimalFormat("#.00");
 		ress.append("\nTotal: ");
 		ress.append(df.format(totalPrice));
-		ress.append("\n\n Serviced by <<");
+		ress.append("\n\nServiced by <<");
 		ress.append(cashier.getName());
 		ress.append(">>");
 
