@@ -25,6 +25,12 @@ public class CustomerCont {
 		customer.add(c);
 	}
 	
+	/**
+	 *  finds customer by number from the customer class
+	 * @param phone
+	 * @return Customer
+	 */
+	
 	public Customer findCustomerByNumber(String phone) {
 		Customer res = null;
 		for (Customer c : customer) {
