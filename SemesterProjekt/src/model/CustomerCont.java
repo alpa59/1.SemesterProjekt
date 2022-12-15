@@ -14,9 +14,6 @@ public class CustomerCont {
 		return instance;
 	}
 
-	public ArrayList<Customer> getCustomer() {
-		return customer;
-	}
 	private CustomerCont() {
 		customer = new ArrayList<>();
 	}
@@ -24,13 +21,14 @@ public class CustomerCont {
 	public void add(Customer c) {
 		customer.add(c);
 	}
-	
+
 	/**
-	 *  finds customer by number from the customer class
+	 * finds customer by number from the customer class
+	 * 
 	 * @param phone
 	 * @return Customer
 	 */
-	
+
 	public Customer findCustomerByNumber(String phone) {
 		Customer res = null;
 		for (Customer c : customer) {
@@ -40,7 +38,5 @@ public class CustomerCont {
 		}
 		return res;
 	}
-
-	
 
 }
