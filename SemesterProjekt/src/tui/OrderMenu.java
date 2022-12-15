@@ -6,12 +6,18 @@ import model.Personel;
 
 public class OrderMenu {
 	private OrderCtrl orderCtrl;
-	private boolean isFinnishedScanningItems, scannedOneItem;
+	private boolean isFinnishedScanningItems, scannedOneItem,cancelled;
 
 	public OrderMenu() {
 		orderCtrl = new OrderCtrl();
 		isFinnishedScanningItems = false;
-		boolean cancelled = false;
+		cancelled = false;
+		
+		makeNewOrder();
+
+	}
+
+	private void makeNewOrder() {
 		createOrder();
 
 		StringRenderer r = new StringRenderer();
@@ -37,7 +43,7 @@ public class OrderMenu {
 		}
 
 		System.out.println(orderCtrl.printOrder());
-
+		
 	}
 
 	private void checkIsCustomer() {
