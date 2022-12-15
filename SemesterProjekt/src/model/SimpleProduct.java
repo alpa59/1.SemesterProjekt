@@ -10,6 +10,22 @@ public class SimpleProduct extends AbstractProduct {
 	private double price;
 	private List<InventoryLocationLine> ills;
 
+	/**
+	 * This is the SimpleProduct class
+	 * It represents a SimpleProduct with different fields that described itself,
+	 * and some of which is extended from the AbstractProduct class. 
+	 * The class has methods for creating a InventoryLocation, updating that location and finding it. 
+	 * 
+	 * @param name
+	 * @param description
+	 * @param barcode
+	 * @param price
+	 * @param purchasePrice
+	 * @param nettoPrice
+	 * @param weight
+	 * @param minStock
+	 * @param maxStock
+	 */
 	public SimpleProduct(String name, String description, String barcode, double price, double purchasePrice,
 			double nettoPrice, double weight, int minStock, int maxStock) {
 		super(name, description, barcode, purchasePrice, nettoPrice, weight);
@@ -19,6 +35,14 @@ public class SimpleProduct extends AbstractProduct {
 		ills = new LinkedList<>();
 	}
 
+	/**
+	 * It creates a Inventory Location with an set amount. InventoryLocationLine is
+	 * associated with the SimpleProduct and the InventoryLocation class created is
+	 * associated so.
+	 * 
+	 * @param amount
+	 * @param location
+	 */
 	public void createInventoryLocation(int amount, String location) {
 		InventoryLocationLine line = new InventoryLocationLine(amount, this, location);
 		addIventoryLocationLine(line);
@@ -29,6 +53,13 @@ public class SimpleProduct extends AbstractProduct {
 		ill.setSimpleProduct(this);
 	}
 
+	/**
+	 * It updates the inventory by reducing or increasing the quantity of items in
+	 * the list of InventoryLocationLines.
+	 *
+	 * @param quantity - The quantity to reduce or increase by.
+	 * @return true if the inventory was updated successfully, false otherwise.
+	 */
 	@Override
 	protected boolean updateInventory(int quantity) {
 		boolean res = false;
@@ -42,11 +73,13 @@ public class SimpleProduct extends AbstractProduct {
 		return res;
 	}
 
-	@Override
-	public double getPrice() {
-		return price;
-	}
-
+	/**
+	 * It searches for an inventory location line with a specified location.
+	 *
+	 * @param String location - The location to search for.
+	 * @return The inventory location line with the specified location, or null if
+	 *         not found.
+	 */
 	public InventoryLocationLine findInventoryLocationline(String location) {
 		boolean isFound = false;
 		InventoryLocationLine res = null;
@@ -57,6 +90,11 @@ public class SimpleProduct extends AbstractProduct {
 			}
 		}
 		return res;
+	}
+
+	@Override
+	public double getPrice() {
+		return price;
 	}
 
 }

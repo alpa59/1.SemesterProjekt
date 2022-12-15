@@ -150,4 +150,8 @@ public class Order {
 	public double getTotalPrice() {
 		return totalPrice;
 	}
+	
+	public void setStatusToActive() {
+		this.status = true;
+	}
 }

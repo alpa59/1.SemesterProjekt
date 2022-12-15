@@ -83,6 +83,7 @@ public class OrderCtrl {
 
 	public void confirmOrder() {
 		updateInventory(); 
+		currOrder.setStatusToActive();
 		OrderCont.getInstance().addOrder(currOrder);
 	}
 
