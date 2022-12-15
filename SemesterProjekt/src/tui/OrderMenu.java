@@ -61,15 +61,7 @@ public class OrderMenu {
 
 		switch (input) {
 		case "scan next item":
-			TextInput ti = new TextInput();
-			String scannedItem = ti.promptString("Scan item");
-			Object item;
-			try {
-				item = orderCtrl.scanProductAndAddToOrder(scannedItem);
-				scannedOneItem = true;
-			} catch (ScannedProductFailedException e) {
-				System.out.println("Could not scan item");
-			}
+			scanNextItem();
 			break;
 		case "finished scanning":
 			if (scannedOneItem) {
@@ -83,6 +75,19 @@ public class OrderMenu {
 			throw new IllegalArgumentException("Unexpected value: " + input);
 		}
 
+	}
+
+	private void scanNextItem() {
+		TextInput ti = new TextInput();
+		String scannedItem = ti.promptString("Scan item");
+		Object item;
+		try {
+			item = orderCtrl.scanProductAndAddToOrder(scannedItem);
+			scannedOneItem = true;
+		} catch (ScannedProductFailedException e) {
+			System.out.println("Could not scan item");
+		}
+		
 	}
 
 	private void handleCustomer() {
