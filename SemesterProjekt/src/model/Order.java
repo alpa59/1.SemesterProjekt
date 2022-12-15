@@ -26,8 +26,9 @@ public class Order {
 	/**
 	 * @param abstractProduct
 	 * 
-	 * This method checks if an Orderline with exits with the given argument.
-	 * if not found, then it adds an new OrderLine to list: orderLines
+	 *                        This method checks if an Orderline with exits with the
+	 *                        given argument. if not found, then it adds an new
+	 *                        OrderLine to list: orderLines
 	 * 
 	 * @return Simulates finding an OrderLine, with true/false
 	 */
@@ -47,22 +48,10 @@ public class Order {
 
 		return res;
 	}
-	
-	public void addOrderLine(OrderLine orderLine) {
-		orderLines.add(orderLine);
 
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public void setAddress(String deliveryLocation) {
-		this.deliveryLocation = deliveryLocation;
-	}
-	
 	/**
 	 * This method calculates the total price of the order.
+	 * 
 	 * @return TotalPrice
 	 */
 
@@ -73,14 +62,16 @@ public class Order {
 		}
 		double discount = calculateDiscountOnCustomer(customer);
 		total *= discount;
-		
+
 		totalPrice = total;
 		return total;
 
 	}
 
 	/**
-	 * This method calculate the discount the discount that a customer will receive when they make a purchase
+	 * This method calculate the discount the discount that a customer will receive
+	 * when they make a purchase
+	 * 
 	 * @param customer
 	 * @return discount
 	 */
@@ -89,11 +80,47 @@ public class Order {
 		if (customer != null) {
 			if (customer.getDiscount() != 0) {
 				discount = customer.getDiscount();
-				discount = 1-(discount / 100);
-				
+				discount = 1 - (discount / 100);
+
 			}
 		}
 		return discount;
+	}
+
+	/**
+	 * this Stringbuilder takes the product and the amount with the price and makes
+	 * it a toString, that is used to print a ordre.
+	 * 
+	 * @return ToString
+	 */
+
+	public String printOrder() {
+		StringBuilder ress = new StringBuilder();
+		ress.append("Order: ");
+		ress.append(orderId);
+
+		for (OrderLine ol : orderLines) {
+			ress.append("\nAmount: ");
+			ress.append(ol.getAmount());
+			ress.append("\t Product: ");
+			ress.append(ol.getAbstractProduct().getDescription());
+		}
+		DecimalFormat df = new DecimalFormat("#.00");
+		ress.append("\nTotal: ");
+		ress.append(df.format(totalPrice));
+		ress.append("\n\n Serviced by <<");
+		ress.append(cashier.getName());
+		ress.append(">>");
+
+		return ress.toString();
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setStatusToActive() {
+		this.status = true;
 	}
 
 	public List<OrderLine> getOrderLines() {
@@ -120,38 +147,16 @@ public class Order {
 		this.orderId = orderId;
 	}
 
-	/**
-	 *  this Stringbuilder takes the product and the amount with the price and makes it a toString,
-	 * that is used to print a ordre.
-	 * @return ToString
-	 */
-	
-	public String printOrder() {
-		StringBuilder ress = new StringBuilder();
-		ress.append("Order: ");
-		ress.append(orderId);
-		
-		for (OrderLine ol : orderLines) {
-			ress.append("\nAmount: ");
-			ress.append(ol.getAmount());
-			ress.append("\t Product: ");
-			ress.append(ol.getAbstractProduct().getDescription());
-		}
-		DecimalFormat df = new DecimalFormat("#.00");
-		ress.append("\nTotal: ");
-		ress.append(df.format(totalPrice));
-		ress.append("\n\n Serviced by <<");
-		ress.append(cashier.getName());
-		ress.append(">>");
+	public void addOrderLine(OrderLine orderLine) {
+		orderLines.add(orderLine);
 
-		return ress.toString();
 	}
 
-	public double getTotalPrice() {
-		return totalPrice;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-	
-	public void setStatusToActive() {
-		this.status = true;
+
+	public void setAddress(String deliveryLocation) {
+		this.deliveryLocation = deliveryLocation;
 	}
 }
