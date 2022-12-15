@@ -47,12 +47,12 @@ public class Customer {
 		return credit;
 	}
 
-	public int getDiscount() {
-		return discount;
-	}
-
 	public void setCredit(double newCredit) {
 		credit = newCredit;
+	}
+	
+	public int getDiscount() {
+		return discount;
 	}
 
 	public void updateCredit(double total) {
