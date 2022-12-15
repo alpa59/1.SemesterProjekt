@@ -26,7 +26,6 @@ public class Order {
 	/**
 	 * @param abstractProduct
 	 * 
-	 * This methord checks if an Orderline with exits with the given argument.
 	 * if not found, then it adds an new OrderLine to list: orderLines
 	 * 
 	 * @return Simulates finding an OrderLine, with true/false
@@ -62,7 +61,6 @@ public class Order {
 	}
 	
 	/**
-	 * This methord calculates the total price of the order.
 	 * @return TotalPrice
 	 */
 
@@ -80,9 +78,7 @@ public class Order {
 	}
 
 	/**
-	 * This is a
 	 * @param customer
-	 * @return
 	 */
 	private double calculateDiscountOnCustomer(Customer customer) {
 		double discount = 1;
