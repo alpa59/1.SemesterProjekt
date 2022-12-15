@@ -26,7 +26,7 @@ public class Order {
 	/**
 	 * @param abstractProduct
 	 * 
-	 * This methord checks if an Orderline with exits with the given argument.
+	 * This method checks if an Orderline with exits with the given argument.
 	 * if not found, then it adds an new OrderLine to list: orderLines
 	 * 
 	 * @return Simulates finding an OrderLine, with true/false
@@ -62,7 +62,7 @@ public class Order {
 	}
 	
 	/**
-	 * This methord calculates the total price of the order.
+	 * This method calculates the total price of the order.
 	 * @return TotalPrice
 	 */
 
@@ -80,9 +80,9 @@ public class Order {
 	}
 
 	/**
-	 * This is a
+	 * This method calculate the discount the discount that a customer will receive when they make a purchase
 	 * @param customer
-	 * @return
+	 * @return discount
 	 */
 	private double calculateDiscountOnCustomer(Customer customer) {
 		double discount = 1;
@@ -120,6 +120,12 @@ public class Order {
 		this.orderId = orderId;
 	}
 
+	/**
+	 *  this Stringbuilder takes the product and the amount with the price and makes it a toString,
+	 * that is used to print a ordre.
+	 * @return ToString
+	 */
+	
 	public String printOrder() {
 		StringBuilder ress = new StringBuilder();
 		ress.append("Order: ");
