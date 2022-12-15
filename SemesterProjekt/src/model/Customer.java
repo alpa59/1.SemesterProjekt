@@ -1,5 +1,16 @@
 package model;
-
+/**
+ * the customer class represent the customers that are registered in the system
+ *
+ * @param customerID  The customer's ID number
+ * @param name        The name of the customer.
+ * @param email       The customer's email address
+ * @param phoneNumber The customer's phone number.
+ * @param address     The customer´s address.
+ * @param discount    The amount of discount the customer has.
+ * @param credit      The amount of credit the customer has.
+ * @param pincode     The customer´s pincode
+ */
 public class Customer {
 
 	private String customerID;
