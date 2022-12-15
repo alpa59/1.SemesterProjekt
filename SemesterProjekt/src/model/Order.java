@@ -62,6 +62,7 @@ public class Order {
 	}
 	
 	/**
+	 * This method calculates the total price of the order.
 	 * @return TotalPrice
 	 */
 
