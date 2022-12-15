@@ -18,7 +18,8 @@ public class OrderMenu {
 	}
 
 	private void makeNewOrder() {
-		createOrder();
+		
+		orderCtrl.createOrder();
 
 		StringRenderer r = new StringRenderer();
 		TextChoice<String> tc = new TextChoice<>("Order Menu", r);
@@ -81,11 +82,6 @@ public class OrderMenu {
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + input);
 		}
-
-	}
-
-	private void createOrder() {
-		orderCtrl.createOrder();
 
 	}
 
