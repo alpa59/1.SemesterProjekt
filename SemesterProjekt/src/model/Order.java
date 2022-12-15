@@ -79,7 +79,9 @@ public class Order {
 	}
 
 	/**
+	 * This method calculate the discount the discount that a customer will receive when they make a purchase
 	 * @param customer
+	 * @return discount
 	 */
 	private double calculateDiscountOnCustomer(Customer customer) {
 		double discount = 1;
@@ -117,6 +119,12 @@ public class Order {
 		this.orderId = orderId;
 	}
 
+	/**
+	 *  this method 
+	 * 
+	 * @return ToString
+	 */
+	
 	public String printOrder() {
 		StringBuilder ress = new StringBuilder();
 		ress.append("Order: ");
