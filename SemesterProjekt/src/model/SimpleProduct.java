@@ -3,6 +3,22 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This is the SimpleProduct class It represents a SimpleProduct with different
+ * fields that described itself, and some of which is extended from the
+ * AbstractProduct class. The class has methods for creating a
+ * InventoryLocation, updating that location and finding it.
+ * 
+ * @param name
+ * @param description
+ * @param barcode
+ * @param price
+ * @param purchasePrice
+ * @param nettoPrice
+ * @param weight
+ * @param minStock
+ * @param maxStock
+ */
 public class SimpleProduct extends AbstractProduct {
 
 	private int minStock;
@@ -10,22 +26,6 @@ public class SimpleProduct extends AbstractProduct {
 	private double price;
 	private List<InventoryLocationLine> ills;
 
-	/**
-	 * This is the SimpleProduct class
-	 * It represents a SimpleProduct with different fields that described itself,
-	 * and some of which is extended from the AbstractProduct class. 
-	 * The class has methods for creating a InventoryLocation, updating that location and finding it. 
-	 * 
-	 * @param name
-	 * @param description
-	 * @param barcode
-	 * @param price
-	 * @param purchasePrice
-	 * @param nettoPrice
-	 * @param weight
-	 * @param minStock
-	 * @param maxStock
-	 */
 	public SimpleProduct(String name, String description, String barcode, double price, double purchasePrice,
 			double nettoPrice, double weight, int minStock, int maxStock) {
 		super(name, description, barcode, purchasePrice, nettoPrice, weight);

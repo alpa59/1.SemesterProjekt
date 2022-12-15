@@ -64,7 +64,7 @@ public class OrderMenu {
 			String scannedItem = ti.promptString("Scan item");
 			Object item;
 			try {
-				item = orderCtrl.scanProduct(scannedItem);
+				item = orderCtrl.scanProductAndAddToOrder(scannedItem);
 				scannedOneItem = true;
 			} catch (ScannedProductFailedException e) {
 				System.out.println("Could not scan item");
