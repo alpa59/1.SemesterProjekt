@@ -73,6 +73,7 @@ class OrderCtrlTest {
 	}
 	
 	void generateTestData() {
+		System.out.println("GenerateTestData");
 		AbstractProduct p = new SimpleProduct("test1", "simp1", "1", 12,54321, 655, 5454, 454, 45);
 		AbstractProduct p1 = new SimpleProduct("test2", "simp2", "2", 13, 12312, 454, 4545, 045, 4545);
 		AbstractProduct p2= new SimpleProduct("test3", "simp3", "3", 14, 1231231, 4545, 0445, 4540, 4540);
