@@ -40,9 +40,8 @@ public class OrderMenu {
 		if (!cancelled) {
 			checkIsCustomer();
 			orderCtrl.confirmOrder();
+			System.out.println(orderCtrl.printOrder());
 		}
-
-		System.out.println(orderCtrl.printOrder());
 		
 	}
 
