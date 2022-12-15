@@ -11,7 +11,9 @@ public class OrderCtrl {
 	 * @param currPersonel
 	 * @return currOrder o
 	 */
-	public Order createOrder(Personel currPersonel) {
+	public Order createOrder() {
+		PersonelCtrl pc = new PersonelCtrl();
+		Personel currPersonel = pc.getCurrPersonel();
 		Order o = new Order(currPersonel);
 		currOrder = o;
 		return o;

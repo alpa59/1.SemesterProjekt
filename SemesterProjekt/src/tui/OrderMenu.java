@@ -80,8 +80,7 @@ public class OrderMenu {
 	}
 
 	private void createOrder() {
-		Personel currPersonel = new Personel("", "", 0, "", "");
-		orderCtrl.createOrder(currPersonel);
+		orderCtrl.createOrder();
 
 	}
 
