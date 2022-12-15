@@ -33,7 +33,7 @@ public class Composite extends AbstractProduct {
 	public double getPrice() {
 		double res = 0;
 		for(CompositeLine cl : compositeLine) {
-			res += cl.getAbstractProduct().getPrice();
+			res += cl.getAbstractProduct().getPrice() * cl.getAmount();
 		}
 		return res;
 	}

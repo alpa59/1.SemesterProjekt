@@ -33,7 +33,7 @@ class CompositePatternTest {
 		//assert
 		assertEquals(cl.size(), 2);
 		assertEquals(coli.getAmount(),5);
-		assertEquals(20, comp.getPrice());
+		assertEquals(100, comp.getPrice());
 	}
 
 }
