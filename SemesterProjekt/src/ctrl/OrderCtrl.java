@@ -23,7 +23,7 @@ public class OrderCtrl {
 	 * @return AbstractProduct
 	 * @throws ScannedProductFailedException
 	 */
-	public AbstractProduct scanProduct(String barcode) throws ScannedProductFailedException {
+	public AbstractProduct scanProductAndAddToOrder(String barcode) throws ScannedProductFailedException {
 
 		AbstractProduct currProduct = new ProductCtrl().findProduct(barcode);
 

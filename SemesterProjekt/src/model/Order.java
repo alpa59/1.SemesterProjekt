@@ -156,7 +156,4 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public void setAddress(String deliveryLocation) {
-		this.deliveryLocation = deliveryLocation;
-	}
 }
