@@ -121,8 +121,8 @@ public class Order {
 	}
 
 	/**
-	 *  this method 
-	 * 
+	 *  this Stringbuilder takes the product and the amount with the price and makes it a toString,
+	 * that is used to print a ordre.
 	 * @return ToString
 	 */
 	
