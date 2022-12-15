@@ -8,6 +8,7 @@ public class OrderCtrl {
 
 	/**
 	 * Creates a new order
+	 * 
 	 * @param currPersonel
 	 * @return currOrder o
 	 */
@@ -18,9 +19,10 @@ public class OrderCtrl {
 		currOrder = o;
 		return o;
 	}
-	
+
 	/**
 	 * Scans a product based on its barcode and adds it to the order
+	 * 
 	 * @param barcode
 	 * @return AbstractProduct
 	 * @throws ScannedProductFailedException
@@ -32,14 +34,16 @@ public class OrderCtrl {
 		if (currProduct == null) {
 			throw new ScannedProductFailedException("Could not scan the product", null);
 		}
-		
+
 		checkAlreadyScannedProductAndAdd(currProduct);
-		
+
 		return currProduct;
 	}
-	
+
 	/**
-	 * Checks whether the selected product is already scanned and adds it to the order if necessary
+	 * Checks whether the selected product is already scanned and adds it to the
+	 * order if necessary
+	 * 
 	 * @param currProduct
 	 * @return res
 	 */
@@ -47,9 +51,11 @@ public class OrderCtrl {
 		boolean res = currOrder.findOrderLineItemAndAdd(currProduct);
 		return res;
 	}
-	
+
 	/**
-	 * Checks whether the customer has enough store credit for the purchase and pays for the order if so
+	 * Checks whether the customer has enough store credit for the purchase and pays
+	 * for the order if so
+	 * 
 	 * @return res
 	 */
 	public boolean checkCreditAndPay() {
@@ -58,23 +64,24 @@ public class OrderCtrl {
 		if (currOrder.getCustomer().getCredit() >= total) {
 			currOrder.getCustomer().updateCredit(total);
 			res = true;
-		} 
+		}
 
 		return res;
 	}
-	
+
 	/**
 	 * Finds a customer based on their phone number in the current order
+	 * 
 	 * @param phone
 	 * @return
 	 */
 	public Customer findCustomerByNumber(String phone) {
 		CustomerCtrl cc = new CustomerCtrl();
-		Customer c =  cc.findCustomerByNumber(phone);
+		Customer c = cc.findCustomerByNumber(phone);
 		currOrder.setCustomer(c);
 		return c;
 	}
-	
+
 	public void chooseDeliveryAddress(String address) {
 		currOrder.setDeliveryLocation(address);
 	}
@@ -84,7 +91,7 @@ public class OrderCtrl {
 	}
 
 	public void confirmOrder() {
-		updateInventory(); 
+		updateInventory();
 		currOrder.setStatusToActive();
 		OrderCont.getInstance().addOrder(currOrder);
 	}
@@ -96,7 +103,8 @@ public class OrderCtrl {
 		ProductCtrl pc = new ProductCtrl();
 		for (int i = 0; i < currOrder.getOrderLines().size(); i++) {
 			AbstractProduct res = currOrder.getOrderLines().get(i).getAbstractProduct();
-			pc.updateInventory(res, currOrder.getOrderLines().get(i).getAmount());
+			int amount = currOrder.getOrderLines().get(i).getAmount();
+			pc.updateInventory(res, amount);
 		}
 	}
 
