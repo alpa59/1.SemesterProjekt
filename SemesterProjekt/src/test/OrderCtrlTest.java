@@ -32,8 +32,8 @@ class OrderCtrlTest {
 		ProductCont.getInstance().addProduct(com);
 		
 		//act
-		AbstractProduct p2 = oc.scanProduct("123");
-		AbstractProduct com1 = oc.scanProduct("unik");
+		AbstractProduct p2 = oc.scanProductAndAddToOrder("123");
+		AbstractProduct com1 = oc.scanProductAndAddToOrder("unik");
 		//assert
 		assertEquals(p, p2);
 		assertEquals(com, com1);
@@ -44,12 +44,12 @@ class OrderCtrlTest {
 		//arrange
 		generateTestData();
 		Order currOrder = oc.createOrder();
-		oc.scanProduct("1");
-		oc.scanProduct("2");
-		oc.scanProduct("3");
-		oc.scanProduct("4");
-		oc.scanProduct("5");
-		oc.scanProduct("6");
+		oc.scanProductAndAddToOrder("1");
+		oc.scanProductAndAddToOrder("2");
+		oc.scanProductAndAddToOrder("3");
+		oc.scanProductAndAddToOrder("4");
+		oc.scanProductAndAddToOrder("5");
+		oc.scanProductAndAddToOrder("6");
 		//act
 		oc.findCustomerByNumber("1234");
 		oc.checkCreditAndPay();

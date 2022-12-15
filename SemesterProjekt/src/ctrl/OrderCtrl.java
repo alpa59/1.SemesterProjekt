@@ -76,7 +76,7 @@ public class OrderCtrl {
 	}
 	
 	public void chooseDeliveryAddress(String address) {
-		currOrder.setAddress(address);
+		currOrder.setDeliveryLocation(address);
 	}
 
 	public void choosePayment(Payment payment) {
