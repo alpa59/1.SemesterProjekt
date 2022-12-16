@@ -12,7 +12,7 @@ public class LoginCtrl {
 	
 	public static LoginCtrl getInstance() {
 		if(instance == null) {
-			instance = instance = new LoginCtrl(); 
+			instance = new LoginCtrl(); 
 		}
 		
 		return instance;
