@@ -18,6 +18,8 @@ import javax.swing.SpringLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainMenu extends JFrame {
 
@@ -52,7 +54,12 @@ public class MainMenu extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_1 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
+		flowLayout.setAlignment(FlowLayout.RIGHT);
 		contentPane.add(panel_1, BorderLayout.SOUTH);
+		
+		JButton btnExit_1 = new JButton("Exit");
+		panel_1.add(btnExit_1);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.EAST);
@@ -69,18 +76,28 @@ public class MainMenu extends JFrame {
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0};
-		gbl_panel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel.setLayout(gbl_panel);
+		panel.setLayout(new BorderLayout(0, 0));
 		
-		JButton btnNewButton = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.gridx = 8;
-		gbc_btnNewButton.gridy = 0;
-		panel.add(btnNewButton, gbc_btnNewButton);
+		JButton btnCreateOrder = new JButton("Create Order");
+		btnCreateOrder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createOrderClicked();
+			}
+		});
+		panel.add(btnCreateOrder, BorderLayout.NORTH);
+		
+		init();
+	}
+
+	private void createOrderClicked() {
+		CreateOrder co = new CreateOrder();
+		co.setVisible(true);
+		
+	}
+
+	private void init() {
+		
+		
 	}
 
 }
