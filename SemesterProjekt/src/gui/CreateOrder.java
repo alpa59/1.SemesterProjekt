@@ -7,12 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ctrl.OrderCtrl;
+import ctrl.ProductCtrl;
+import model.AbstractProduct;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.List;
+
 import javax.swing.JLabel;
 import java.awt.Color;
 
@@ -26,6 +33,8 @@ public class CreateOrder extends JDialog {
 	private JTextField txtPhone;
 	private JTextField txtAddress;
 	private JTextField txtBarcode;
+	private OrderCtrl oc;
+	private CreateOrderTableModel cotm;
 
 	/**
 	 * Launch the application.
@@ -60,6 +69,7 @@ public class CreateOrder extends JDialog {
 			{
 				tblProducts = new JTable();
 				panel.add(tblProducts);
+				
 			}
 		}
 		{
@@ -192,6 +202,22 @@ public class CreateOrder extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+		init();
 	}
+
+	private void init() {
+		oc = new OrderCtrl();
+		//TODO change null
+		List<AbstractProduct> products = null;
+		cotm = new CreateOrderTableModel(products);
+		tblProducts.setModel(cotm);
+		displayMembers();
+	}
+
+	private void displayMembers() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 }
