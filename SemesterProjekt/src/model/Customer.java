@@ -60,4 +60,22 @@ public class Customer {
 
 	}
 
+	public String getCustomerID() {
+		return customerID;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+	
+	
+
 }

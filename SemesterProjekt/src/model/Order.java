@@ -58,7 +58,7 @@ public class Order {
 	public double calculateTotal() {
 		double total = 0;
 		for (int i = 0; i < orderLines.size(); i++) {
-			total += orderLines.get(i).getAbstractProduct().getPrice();
+			total += orderLines.get(i).getPrice();
 		}
 		double discount = calculateDiscountOnCustomer(customer);
 		total *= discount;
