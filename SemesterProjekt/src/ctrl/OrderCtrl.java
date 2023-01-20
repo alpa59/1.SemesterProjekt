@@ -63,19 +63,21 @@ public class OrderCtrl {
 	public boolean checkCreditAndPay() {
 		boolean res = false;
 		double total = calculateTotal();
-		if (currOrder.getCustomer().getCredit() >= total) {
-			currOrder.getCustomer().updateCredit(total);
-			res = true;
+		if (currOrder.getPayment() == Payment.INSTORE) {
+
+		} else {
+			if (currOrder.getCustomer() != null && currOrder.getCustomer().getCredit() >= total) {
+				currOrder.getCustomer().updateCredit(total);
+				res = true;
+			}
 		}
 
 		return res;
 	}
-	
+
 	public double calculateTotal() {
 		return currOrder.calculateTotal();
 	}
-	
-	
 
 	/**
 	 * Finds a customer based on their phone number in the current order
@@ -120,8 +122,8 @@ public class OrderCtrl {
 		String ress = currOrder.printOrder();
 		return ress;
 	}
-	
-	public List<OrderLine> getOrderLines(){
+
+	public List<OrderLine> getOrderLines() {
 		return currOrder.getOrderLines();
 	}
 

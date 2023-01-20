@@ -156,4 +156,8 @@ public class Order {
 		this.customer = customer;
 	}
 
+	public Payment getPayment() {
+		return payment;
+	}
+
 }

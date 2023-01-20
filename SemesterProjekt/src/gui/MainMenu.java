@@ -52,32 +52,37 @@ public class MainMenu extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
+
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panel_1.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		contentPane.add(panel_1, BorderLayout.SOUTH);
-		
+
 		JButton btnExit_1 = new JButton("Exit");
+		btnExit_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exitClicked();
+			}
+		});
 		panel_1.add(btnExit_1);
-		
+
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.EAST);
-		
+
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3, BorderLayout.WEST);
-		
+
 		JPanel panel_4 = new JPanel();
 		contentPane.add(panel_4, BorderLayout.NORTH);
-		
+
 		JLabel lblNewLabel = new JLabel("Main Menu");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		panel_4.add(lblNewLabel);
-		
+
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		
+
 		JButton btnCreateOrder = new JButton("Create Order");
 		btnCreateOrder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,19 +90,23 @@ public class MainMenu extends JFrame {
 			}
 		});
 		panel.add(btnCreateOrder, BorderLayout.NORTH);
-		
+
 		init();
+	}
+
+	private void exitClicked() {
+		super.setVisible(false);
+		super.dispose();
 	}
 
 	private void createOrderClicked() {
 		CreateOrder co = new CreateOrder();
 		co.setVisible(true);
-		
+
 	}
 
 	private void init() {
-		
-		
+
 	}
 
 }
