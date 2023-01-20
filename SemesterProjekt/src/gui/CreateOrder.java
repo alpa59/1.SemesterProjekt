@@ -376,10 +376,12 @@ public class CreateOrder extends JDialog {
 		if (tglBtnDelivery.isSelected()) {
 			tglBtnDelivery.setText("Address");
 			String address = JOptionPane.showInputDialog("Type delivery address:");
-			oc.chooseDeliveryAddress(address);
-		} else {
-			tglBtnDelivery.setText("In-store");
-			oc.chooseDeliveryAddress("In-store");
+			if (address == null) {
+				oc.chooseDeliveryAddress("In-store");
+			}  else {
+				tglBtnDelivery.setText("In-store");
+				oc.chooseDeliveryAddress("In-store");
+			}
 		}
 	}
 
@@ -395,7 +397,7 @@ public class CreateOrder extends JDialog {
 
 	private void confirmClicked() {
 		Boolean pay = oc.checkCreditAndPay();
-		if(pay == false) {
+		if (pay == false) {
 			JOptionPane.showMessageDialog(this, "In-store payment");
 		}
 		oc.confirmOrder();
