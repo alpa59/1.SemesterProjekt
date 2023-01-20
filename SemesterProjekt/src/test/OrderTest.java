@@ -40,11 +40,12 @@ class OrderTest {
 		order.setCustomer(c);
 		AbstractProduct p = new SimpleProduct("test1", "simp1", "1", 12, 54321, 655, 5454, 454, 45);
 		order.findOrderLineItemAndAdd(p);
+		order.findOrderLineItemAndAdd(p);
 		
 		//act
 		double totalCal = order.calculateTotal();
 		//assert
-		assertEquals(totalCal, 12);
+		assertEquals(totalCal, 24);
 		
 	}
 	

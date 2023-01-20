@@ -1,5 +1,7 @@
 package ctrl;
 
+import java.util.List;
+
 import model.*;
 
 public class OrderCtrl {
@@ -60,7 +62,7 @@ public class OrderCtrl {
 	 */
 	public boolean checkCreditAndPay() {
 		boolean res = false;
-		double total = currOrder.calculateTotal();
+		double total = calculateTotal();
 		if (currOrder.getCustomer().getCredit() >= total) {
 			currOrder.getCustomer().updateCredit(total);
 			res = true;
@@ -68,6 +70,12 @@ public class OrderCtrl {
 
 		return res;
 	}
+	
+	public double calculateTotal() {
+		return currOrder.calculateTotal();
+	}
+	
+	
 
 	/**
 	 * Finds a customer based on their phone number in the current order
@@ -111,6 +119,10 @@ public class OrderCtrl {
 	public String printOrder() {
 		String ress = currOrder.printOrder();
 		return ress;
+	}
+	
+	public List<OrderLine> getOrderLines(){
+		return currOrder.getOrderLines();
 	}
 
 }

@@ -27,5 +27,9 @@ public class OrderLine {
 	public AbstractProduct getAbstractProduct() {
 		return abstractProduct;
 	}
+	
+	public double getPrice(){
+		return abstractProduct.getPrice() * amount;
+	}
 
 }

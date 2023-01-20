@@ -44,7 +44,11 @@ public abstract class AbstractProduct {
 		return description;
 	}
 	
-	protected abstract double getPrice();
+	public double getPurchasePrice() {
+		return purchasePrice;
+	}
+	
+	public abstract double getPrice();
 	
 	protected abstract boolean updateInventory(int quantity);
 	

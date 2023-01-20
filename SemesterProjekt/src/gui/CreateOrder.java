@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 import ctrl.OrderCtrl;
 import ctrl.ProductCtrl;
 import model.AbstractProduct;
+import model.Customer;
+import model.OrderLine;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,12 +23,17 @@ import java.awt.Insets;
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class CreateOrder extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTable tblProducts;
 	private JTextField txtId;
 	private JTextField txtName;
 	private JTextField txtEmail;
@@ -35,6 +42,10 @@ public class CreateOrder extends JDialog {
 	private JTextField txtBarcode;
 	private OrderCtrl oc;
 	private CreateOrderTableModel cotm;
+	private List<OrderLine> ol;
+	private JTable tblOrderLine;
+	private JButton btnCreateCustomer;
+	private JTextField txtTotal;
 
 	/**
 	 * Launch the application.
@@ -61,96 +72,153 @@ public class CreateOrder extends JDialog {
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		{
 			JPanel panel = new JPanel();
-			contentPanel.add(panel, BorderLayout.CENTER);
+			contentPanel.add(panel, BorderLayout.WEST);
+			panel.setLayout(new BorderLayout(0, 0));
 			{
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane);
+				{
+					tblOrderLine = new JTable();
+					scrollPane.setViewportView(tblOrderLine);
+				}
 			}
 			{
-				tblProducts = new JTable();
-				panel.add(tblProducts);
-				
+				JPanel panel_1 = new JPanel();
+				panel.add(panel_1, BorderLayout.SOUTH);
+				panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+				{
+					txtTotal = new JTextField();
+					txtTotal.setHorizontalAlignment(SwingConstants.RIGHT);
+					txtTotal.setEditable(false);
+					panel_1.add(txtTotal);
+					txtTotal.setColumns(10);
+				}
 			}
 		}
 		{
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.EAST);
 			GridBagLayout gbl_panel = new GridBagLayout();
-			gbl_panel.columnWidths = new int[]{0, 0};
+			gbl_panel.columnWidths = new int[]{0, 0, 0};
 			gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-			gbl_panel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+			gbl_panel.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 			gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			panel.setLayout(gbl_panel);
 			{
+				JLabel lblNewLabel_1 = new JLabel("Customer Id:");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 0;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtId = new JTextField();
-				txtId.setText("Customer Id");
 				GridBagConstraints gbc_txtId = new GridBagConstraints();
 				gbc_txtId.insets = new Insets(0, 0, 5, 0);
 				gbc_txtId.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtId.gridx = 0;
+				gbc_txtId.gridx = 1;
 				gbc_txtId.gridy = 0;
 				panel.add(txtId, gbc_txtId);
 				txtId.setColumns(10);
 			}
 			{
+				JLabel lblNewLabel_1 = new JLabel("Name:");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 1;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtName = new JTextField();
-				txtName.setText("Name");
 				GridBagConstraints gbc_txtName = new GridBagConstraints();
 				gbc_txtName.insets = new Insets(0, 0, 5, 0);
 				gbc_txtName.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtName.gridx = 0;
+				gbc_txtName.gridx = 1;
 				gbc_txtName.gridy = 1;
 				panel.add(txtName, gbc_txtName);
 				txtName.setColumns(10);
 			}
 			{
+				JLabel lblNewLabel_1 = new JLabel("Email:");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 2;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtEmail = new JTextField();
-				txtEmail.setText("Email");
 				GridBagConstraints gbc_txtEmail = new GridBagConstraints();
 				gbc_txtEmail.insets = new Insets(0, 0, 5, 0);
 				gbc_txtEmail.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtEmail.gridx = 0;
+				gbc_txtEmail.gridx = 1;
 				gbc_txtEmail.gridy = 2;
 				panel.add(txtEmail, gbc_txtEmail);
 				txtEmail.setColumns(10);
 			}
 			{
+				JLabel lblNewLabel_1 = new JLabel("Phone:");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 3;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtPhone = new JTextField();
-				txtPhone.setText("Phone");
 				GridBagConstraints gbc_txtPhone = new GridBagConstraints();
 				gbc_txtPhone.insets = new Insets(0, 0, 5, 0);
 				gbc_txtPhone.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtPhone.gridx = 0;
+				gbc_txtPhone.gridx = 1;
 				gbc_txtPhone.gridy = 3;
 				panel.add(txtPhone, gbc_txtPhone);
 				txtPhone.setColumns(10);
 			}
 			{
+				JLabel lblNewLabel_1 = new JLabel("Address:");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 4;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtAddress = new JTextField();
-				txtAddress.setText("Address");
 				GridBagConstraints gbc_txtAddress = new GridBagConstraints();
 				gbc_txtAddress.insets = new Insets(0, 0, 5, 0);
 				gbc_txtAddress.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtAddress.gridx = 0;
+				gbc_txtAddress.gridx = 1;
 				gbc_txtAddress.gridy = 4;
 				panel.add(txtAddress, gbc_txtAddress);
 				txtAddress.setColumns(10);
 			}
 			{
 				JButton btnFindCustomer = new JButton("Find Customer");
+				btnFindCustomer.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						findCustomerClicked();
+					}
+				});
 				GridBagConstraints gbc_btnFindCustomer = new GridBagConstraints();
 				gbc_btnFindCustomer.fill = GridBagConstraints.BOTH;
 				gbc_btnFindCustomer.insets = new Insets(0, 0, 5, 0);
-				gbc_btnFindCustomer.gridx = 0;
+				gbc_btnFindCustomer.gridx = 1;
 				gbc_btnFindCustomer.gridy = 5;
 				panel.add(btnFindCustomer, gbc_btnFindCustomer);
 			}
 			{
-				JButton btnCreateCustomer = new JButton("Create Customer");
+				btnCreateCustomer = new JButton("Create Customer");
 				GridBagConstraints gbc_btnCreateCustomer = new GridBagConstraints();
 				gbc_btnCreateCustomer.insets = new Insets(0, 0, 5, 0);
 				gbc_btnCreateCustomer.fill = GridBagConstraints.BOTH;
-				gbc_btnCreateCustomer.gridx = 0;
+				gbc_btnCreateCustomer.gridx = 1;
 				gbc_btnCreateCustomer.gridy = 6;
 				panel.add(btnCreateCustomer, gbc_btnCreateCustomer);
 			}
@@ -162,26 +230,39 @@ public class CreateOrder extends JDialog {
 				gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 				gbc_lblNewLabel.fill = GridBagConstraints.HORIZONTAL;
 				gbc_lblNewLabel.weightx = 3.0;
-				gbc_lblNewLabel.gridx = 0;
+				gbc_lblNewLabel.gridx = 1;
 				gbc_lblNewLabel.gridy = 7;
 				panel.add(lblNewLabel, gbc_lblNewLabel);
 			}
 			{
+				JLabel lblNewLabel_1 = new JLabel("Barcode");
+				GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+				gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+				gbc_lblNewLabel_1.gridx = 0;
+				gbc_lblNewLabel_1.gridy = 12;
+				panel.add(lblNewLabel_1, gbc_lblNewLabel_1);
+			}
+			{
 				txtBarcode = new JTextField();
-				txtBarcode.setText("Barcode");
 				GridBagConstraints gbc_txtBarcode = new GridBagConstraints();
 				gbc_txtBarcode.insets = new Insets(0, 0, 5, 0);
 				gbc_txtBarcode.fill = GridBagConstraints.HORIZONTAL;
-				gbc_txtBarcode.gridx = 0;
+				gbc_txtBarcode.gridx = 1;
 				gbc_txtBarcode.gridy = 12;
 				panel.add(txtBarcode, gbc_txtBarcode);
 				txtBarcode.setColumns(10);
 			}
 			{
 				JButton btnScanItem = new JButton("Scan Product");
+				btnScanItem.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						scanProductClicked();
+					}
+				});
 				GridBagConstraints gbc_btnScanItem = new GridBagConstraints();
 				gbc_btnScanItem.fill = GridBagConstraints.BOTH;
-				gbc_btnScanItem.gridx = 0;
+				gbc_btnScanItem.gridx = 1;
 				gbc_btnScanItem.gridy = 13;
 				panel.add(btnScanItem, gbc_btnScanItem);
 			}
@@ -205,12 +286,56 @@ public class CreateOrder extends JDialog {
 		init();
 	}
 
+	private void findCustomerClicked() {
+		String phone = JOptionPane.showInputDialog("Customer's phone number");
+		Customer c = oc.findCustomerByNumber(phone);
+		
+		if(c != null) {
+			txtId.setText(c.getCustomerID());
+			txtId.setEditable(false);
+			
+			txtAddress.setText(c.getAddress());
+			txtAddress.setEditable(false);
+			
+			txtName.setText(c.getName());
+			txtName.setEditable(false);
+			
+			txtEmail.setText(c.getEmail());
+			txtEmail.setEditable(false);
+			
+			txtPhone.setText(phone);
+			txtPhone.setEditable(false);
+			
+			btnCreateCustomer.setVisible(false);
+		}else {
+			JOptionPane.showMessageDialog(this, "Customer not found");
+		}
+	}
+
+	private void scanProductClicked() {
+		try {
+			oc.scanProductAndAddToOrder(txtBarcode.getText());
+			ol = oc.getOrderLines();
+			cotm.setData(ol);
+			txtBarcode.setText("");
+			
+			DecimalFormat decimalFormat = new DecimalFormat("#.00");
+			String total = decimalFormat.format(oc.calculateTotal());
+			txtTotal.setText(total);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Item not found");
+		}
+		
+		
+	}
+
 	private void init() {
 		oc = new OrderCtrl();
+		oc.createOrder();
 		//TODO change null
-		List<AbstractProduct> products = null;
-		cotm = new CreateOrderTableModel(products);
-		tblProducts.setModel(cotm);
+		ol = null;
+		cotm = new CreateOrderTableModel(ol);
+		tblOrderLine.setModel(cotm);
 		displayMembers();
 	}
 
