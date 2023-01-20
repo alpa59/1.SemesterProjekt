@@ -31,7 +31,7 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.discount = discount;
-		this.credit = 10000;
+		this.credit = 1000;
 		this.pincode = pincode;
 	}
 

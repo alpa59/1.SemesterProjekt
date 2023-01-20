@@ -32,9 +32,12 @@ import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
+import javax.swing.JRadioButton;
+import java.awt.GridLayout;
 
 public class CreateOrder extends JDialog {
 
+	private static String INSTORE = "In-Store";
 	private final JPanel contentPanel = new JPanel();
 	private JTextField txtId;
 	private JTextField txtName;
@@ -48,7 +51,8 @@ public class CreateOrder extends JDialog {
 	private JTable tblOrderLine;
 	private JTextField txtTotal;
 	private JToggleButton tglBtnPayment;
-	private JToggleButton tglBtnDelivery;
+	private JRadioButton rdnbtnDelivery;
+	private JLabel lblDiscountText;
 
 	/**
 	 * Launch the application.
@@ -89,16 +93,38 @@ public class CreateOrder extends JDialog {
 			{
 				JPanel panel_1 = new JPanel();
 				panel.add(panel_1, BorderLayout.SOUTH);
-				panel_1.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+				GridBagLayout gbl_panel_1 = new GridBagLayout();
+				gbl_panel_1.columnWidths = new int[]{319, 27, 96, 0};
+				gbl_panel_1.rowHeights = new int[]{0, 19, 0};
+				gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+				gbl_panel_1.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+				panel_1.setLayout(gbl_panel_1);
+				{
+					lblDiscountText = new JLabel("");
+					GridBagConstraints gbc_lblDiscountText = new GridBagConstraints();
+					gbc_lblDiscountText.insets = new Insets(0, 0, 5, 0);
+					gbc_lblDiscountText.gridx = 2;
+					gbc_lblDiscountText.gridy = 0;
+					panel_1.add(lblDiscountText, gbc_lblDiscountText);
+				}
 				{
 					JLabel lblNewLabel_2 = new JLabel("Total:");
-					panel_1.add(lblNewLabel_2);
+					GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+					gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
+					gbc_lblNewLabel_2.insets = new Insets(0, 0, 0, 5);
+					gbc_lblNewLabel_2.gridx = 1;
+					gbc_lblNewLabel_2.gridy = 1;
+					panel_1.add(lblNewLabel_2, gbc_lblNewLabel_2);
 				}
 				{
 					txtTotal = new JTextField();
 					txtTotal.setHorizontalAlignment(SwingConstants.RIGHT);
 					txtTotal.setEditable(false);
-					panel_1.add(txtTotal);
+					GridBagConstraints gbc_txtTotal = new GridBagConstraints();
+					gbc_txtTotal.anchor = GridBagConstraints.NORTHWEST;
+					gbc_txtTotal.gridx = 2;
+					gbc_txtTotal.gridy = 1;
+					panel_1.add(txtTotal, gbc_txtTotal);
 					txtTotal.setColumns(10);
 				}
 			}
@@ -124,6 +150,7 @@ public class CreateOrder extends JDialog {
 			}
 			{
 				txtId = new JTextField();
+				txtId.setEditable(false);
 				GridBagConstraints gbc_txtId = new GridBagConstraints();
 				gbc_txtId.insets = new Insets(0, 0, 5, 0);
 				gbc_txtId.fill = GridBagConstraints.HORIZONTAL;
@@ -143,6 +170,7 @@ public class CreateOrder extends JDialog {
 			}
 			{
 				txtName = new JTextField();
+				txtName.setEditable(false);
 				GridBagConstraints gbc_txtName = new GridBagConstraints();
 				gbc_txtName.insets = new Insets(0, 0, 5, 0);
 				gbc_txtName.fill = GridBagConstraints.HORIZONTAL;
@@ -162,6 +190,7 @@ public class CreateOrder extends JDialog {
 			}
 			{
 				txtEmail = new JTextField();
+				txtEmail.setEditable(false);
 				GridBagConstraints gbc_txtEmail = new GridBagConstraints();
 				gbc_txtEmail.insets = new Insets(0, 0, 5, 0);
 				gbc_txtEmail.fill = GridBagConstraints.HORIZONTAL;
@@ -181,6 +210,7 @@ public class CreateOrder extends JDialog {
 			}
 			{
 				txtPhone = new JTextField();
+				txtPhone.setEditable(false);
 				GridBagConstraints gbc_txtPhone = new GridBagConstraints();
 				gbc_txtPhone.insets = new Insets(0, 0, 5, 0);
 				gbc_txtPhone.fill = GridBagConstraints.HORIZONTAL;
@@ -200,6 +230,7 @@ public class CreateOrder extends JDialog {
 			}
 			{
 				txtAddress = new JTextField();
+				txtAddress.setEditable(false);
 				GridBagConstraints gbc_txtAddress = new GridBagConstraints();
 				gbc_txtAddress.insets = new Insets(0, 0, 5, 0);
 				gbc_txtAddress.fill = GridBagConstraints.HORIZONTAL;
@@ -265,7 +296,7 @@ public class CreateOrder extends JDialog {
 				panel.add(tglBtnPayment, gbc_tglBtnPayment);
 			}
 			{
-				JLabel lblNewLabel_7 = new JLabel("Delivery:");
+				JLabel lblNewLabel_7 = new JLabel("Toggle Delivery:");
 				GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 				gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
 				gbc_lblNewLabel_7.gridx = 0;
@@ -273,18 +304,17 @@ public class CreateOrder extends JDialog {
 				panel.add(lblNewLabel_7, gbc_lblNewLabel_7);
 			}
 			{
-				tglBtnDelivery = new JToggleButton("In-store");
-				tglBtnDelivery.addActionListener(new ActionListener() {
+				rdnbtnDelivery = new JRadioButton("");
+				rdnbtnDelivery.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						toggleDeliveryClicked();
+						rdnbtnClicked();
 					}
 				});
-				GridBagConstraints gbc_tglBtnDelivery = new GridBagConstraints();
-				gbc_tglBtnDelivery.fill = GridBagConstraints.BOTH;
-				gbc_tglBtnDelivery.insets = new Insets(0, 0, 5, 0);
-				gbc_tglBtnDelivery.gridx = 1;
-				gbc_tglBtnDelivery.gridy = 9;
-				panel.add(tglBtnDelivery, gbc_tglBtnDelivery);
+				GridBagConstraints gbc_rdnbtnDelivery = new GridBagConstraints();
+				gbc_rdnbtnDelivery.insets = new Insets(0, 0, 5, 0);
+				gbc_rdnbtnDelivery.gridx = 1;
+				gbc_rdnbtnDelivery.gridy = 9;
+				panel.add(rdnbtnDelivery, gbc_rdnbtnDelivery);
 			}
 			{
 				JLabel lblNewLabel_5 = new JLabel(" ");
@@ -372,17 +402,18 @@ public class CreateOrder extends JDialog {
 		init();
 	}
 
-	private void toggleDeliveryClicked() {
-		if (tglBtnDelivery.isSelected()) {
-			tglBtnDelivery.setText("Address");
-			String address = JOptionPane.showInputDialog("Type delivery address:");
-			if (address == null) {
-				oc.chooseDeliveryAddress("In-store");
-			}  else {
-				tglBtnDelivery.setText("In-store");
-				oc.chooseDeliveryAddress("In-store");
+	private void rdnbtnClicked() {
+		if (rdnbtnDelivery.isSelected()) {
+			String address = JOptionPane.showInputDialog("Write Address:");
+			if (address != null) {
+				oc.chooseDeliveryAddress(address);
+			} else {
+				rdnbtnDelivery.setSelected(false);
 			}
+		} else {
+			oc.chooseDeliveryAddress(INSTORE);
 		}
+
 	}
 
 	private void togglePaymentClicked() {
@@ -390,7 +421,7 @@ public class CreateOrder extends JDialog {
 			tglBtnPayment.setText("Credit");
 			oc.choosePayment(Payment.INVOICE);
 		} else {
-			tglBtnPayment.setText("In-store");
+			tglBtnPayment.setText(INSTORE);
 			oc.choosePayment(Payment.INSTORE);
 		}
 	}
@@ -398,10 +429,10 @@ public class CreateOrder extends JDialog {
 	private void confirmClicked() {
 		Boolean pay = oc.checkCreditAndPay();
 		if (pay == false) {
-			JOptionPane.showMessageDialog(this, "In-store payment");
+			JOptionPane.showMessageDialog(this, INSTORE + " payment");
 		}
 		oc.confirmOrder();
-		System.out.println(oc.printOrder());
+		JOptionPane.showMessageDialog(this, oc.printOrder());
 		cancelCliked();
 	}
 
@@ -431,6 +462,8 @@ public class CreateOrder extends JDialog {
 			txtPhone.setEditable(false);
 
 			tglBtnPayment.setEnabled(true);
+			lblDiscountText.setText("Discount Applied");
+			
 		} else {
 			JOptionPane.showMessageDialog(this, "Customer not found");
 		}

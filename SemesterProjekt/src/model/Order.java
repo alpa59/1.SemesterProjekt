@@ -20,7 +20,7 @@ public class Order {
 		this.date = LocalDate.now();
 		cashier = currPersonel;
 		orderLines = new LinkedList<>();
-
+		deliveryLocation = "In-Store";
 	}
 
 	/**
@@ -111,6 +111,15 @@ public class Order {
 		ress.append("\n\nServiced by <<");
 		ress.append(cashier.getName());
 		ress.append(">>");
+
+		ress.append("\n");
+		ress.append("Delivety address: ");
+		ress.append(deliveryLocation);
+		
+		if(customer!= null && payment == Payment.INVOICE) {
+			ress.append("\nCustomer Credit:");
+			ress.append(Double.toString(customer.getCredit()));
+		}
 
 		return ress.toString();
 	}
