@@ -475,7 +475,10 @@ public class CreateOrder extends JDialog {
 			ol = oc.getOrderLines();
 			cotm.setData(ol);
 			txtBarcode.setText("");
-
+			
+			
+			
+			
 			DecimalFormat decimalFormat = new DecimalFormat("#.00");
 			String total = decimalFormat.format(oc.calculateTotal());
 			txtTotal.setText(total);
@@ -488,17 +491,11 @@ public class CreateOrder extends JDialog {
 	private void init() {
 		oc = new OrderCtrl();
 		oc.createOrder();
-		// TODO change null
 		ol = null;
 		cotm = new CreateOrderTableModel(ol);
 		tblOrderLine.setModel(cotm);
-		displayMembers();
+		
 		tglBtnPayment.setEnabled(false);
-	}
-
-	private void displayMembers() {
-		// TODO Auto-generated method stub
-
 	}
 
 }
