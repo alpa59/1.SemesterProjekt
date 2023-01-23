@@ -113,7 +113,7 @@ public class Order {
 		ress.append(">>");
 
 		ress.append("\n");
-		ress.append("Delivety address: ");
+		ress.append("Delivery address: ");
 		ress.append(deliveryLocation);
 		
 		if(customer!= null && payment == Payment.INVOICE) {
